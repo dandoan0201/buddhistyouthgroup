@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import "app/nav-menu/nav-menu.component.css";
+
+
+.mini-date-row {
+  border-top: none;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.mini-calendar-date {
+  padding-top: 0px;
+  margin-top: 0px;
+  border: 1px solid #c2c2c2;
+  width: 4em;
+  text-align: center;
+  float: left;
+}
+
+.mini-calendar-month {
+  background: #4b721d;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  font-size: 0.8em;
+  letter-spacing: 0.2em;
+  padding: 0 0.2em;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+
+.mini-calendar-day {
+  font-size: 2em;
+  padding: 0.35em 0 0.22em;
+}
+
+.mini-calendar-weekday {
+  font-size: 0.8em;
+  padding: 0 0 0.2em;
+}
+
+.mini-calendar-event {
+  clear: right;
+  margin: 7px 0 7px 4.8em;
+  padding: 0;
+  position: relative;
+}

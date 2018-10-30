@@ -1,0 +1,31 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]='["/"]'>
+    <img src="../../assets/buddhist youth group logo.jpg" style="width:50px;height:50px;" />
+    Buddhist Youth Group
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/mission"]'>Mission</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/staff"]'>Staff</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/getInvolved"]'>Get Involved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/buildYouthGroup"]'>Build Youth Group</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<button type="button" class="btn btn-light" (click)="Logout()">Logout</button>
+
