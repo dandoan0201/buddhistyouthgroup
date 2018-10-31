@@ -35,11 +35,41 @@
 <br />
 <br />
 <br />
+<div class="container-fluid">
+  <div class="row">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <img src="../../../assets/camp 2016.jpg" alt="Random first slide">
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="../../../assets/lieu quan 2018.jpg" alt="Random second slide">
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img [src]="images[2]" alt="Random third slide">
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>
+
+
+<br />
 
 <div class="container-fluid">
   <div class="row">
     <div class="">
-      <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <strong> Input Year</strong>  &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
+      <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <strong> {{ calendarDateYear }} </strong>  &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
       <br />
       &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-light" (click)="ChangeMonth(0)">January</button>
       <br />

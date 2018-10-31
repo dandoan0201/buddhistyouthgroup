@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //import { LoginComponent } from './login/login.component';
 
@@ -38,6 +39,7 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
     HttpClientModule,
     FormsModule,
     AngularFontAwesomeModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },

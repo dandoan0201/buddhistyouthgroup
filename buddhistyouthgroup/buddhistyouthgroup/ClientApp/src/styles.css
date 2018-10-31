@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "app/nav-menu/nav-menu.component.css";
 
+.carousel {
+  margin: auto;
+}
 
 .mini-date-row {
   border-top: none;

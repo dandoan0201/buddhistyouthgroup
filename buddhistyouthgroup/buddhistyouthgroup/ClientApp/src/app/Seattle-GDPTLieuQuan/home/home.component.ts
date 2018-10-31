@@ -9,9 +9,14 @@ import { Options } from 'fullcalendar';
 
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
+  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+
   calendarOptions: Options;
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
+
+  calendarDateYear: any = new Date().getFullYear();
+
   constructor() { }
 
   ngOnInit() {
@@ -29,6 +34,25 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
       fixedWeekCount: false
      
     };
+  }
+
+
+  ChangeMonth(monthNumber) {
+
+    let newDate = this.ucCalendar.fullCalendar('getDate');
+    newDate = newDate.month(monthNumber);
+
+    this.ucCalendar.fullCalendar('gotoDate', newDate);
+  }
+
+  MoveYearBackward() {
+    this.ucCalendar.fullCalendar('prevYear');
+    this.calendarDateYear = this.ucCalendar.fullCalendar('getDate').get('year');
+  }
+
+  MoveYearForward() {
+    this.ucCalendar.fullCalendar('nextYear');
+    this.calendarDateYear = this.ucCalendar.fullCalendar('getDate').get('year');
   }
 
 }
