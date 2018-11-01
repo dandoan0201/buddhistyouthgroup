@@ -25,7 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\api.service.ts" />
+    <None Remove="ClientApp\src\app\auth.guard.ts" />
     <None Remove="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
+    <None Remove="ClientApp\src\app\customer.service.ts" />
     <None Remove="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\mission\mission.component.ts" />
@@ -34,7 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\api.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\customer.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mission\mission.component.ts" />

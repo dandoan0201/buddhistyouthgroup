@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 
 export class HomeComponent {
 
+  constructor(private customer: CustomerService) { }
+
   Logout() {
-    //this.customer.logout();
+    this.customer.logout();
   }
 
 }

@@ -9,6 +9,23 @@ namespace buddhistyouthgroup.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+
+
+        [HttpPost("[action]")]
+        public JsonResult Login([FromBody] object obj)
+        {
+            //TwilioClient.Init(accountSid, authToken);
+
+            //var message = MessageResource.Create(
+            //    body: "TESTING, FIRST TEXT MESSAGE!",
+            //    from: new Twilio.Types.PhoneNumber("+12062026893"),
+            //    to: new Twilio.Types.PhoneNumber("4252330581")
+            //    );
+
+            var test = obj;
+            return Json(new { token = "test" });
+        }
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

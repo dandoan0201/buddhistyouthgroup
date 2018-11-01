@@ -10,8 +10,8 @@ import { Options } from 'fullcalendar';
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
   images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-
-  eventsArray: any = [{ title: 'event 1', start: '2018-11-02' }];
+  obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };
+  eventsArray: any = this.obj;
 
   calendarOptions: Options;
 

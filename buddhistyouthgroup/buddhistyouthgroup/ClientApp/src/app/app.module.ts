@@ -7,7 +7,8 @@ import { FullCalendarModule } from 'ng-fullcalendar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-//import { LoginComponent } from './login/login.component';
+import { NeedAuthGuard } from '../app/auth.guard';
+import { LoginComponent } from './login/login.component';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -31,7 +32,8 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
     StaffComponent,
     GetInvolvedComponent,
     BuildYouthGroupComponent,
-    SeattleGDPTLieuQuanHomeComponent
+    SeattleGDPTLieuQuanHomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,17 +44,19 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'mission', component: MissionComponent },
       { path: 'staff', component: StaffComponent },
       { path: 'getInvolved', component: GetInvolvedComponent },
       { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
       { path: 'gdptlieuquan', component: SeattleGDPTLieuQuanHomeComponent },
-      //{ path: 'login', component: LoginComponent },
+      { path: 'login', component: LoginComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    NeedAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
