@@ -5,6 +5,10 @@
   margin: auto;
 }
 
+.carousel-inner {
+  height: 500px;
+}
+
 .mini-date-row {
   border-top: none;
   padding-top: 0px;

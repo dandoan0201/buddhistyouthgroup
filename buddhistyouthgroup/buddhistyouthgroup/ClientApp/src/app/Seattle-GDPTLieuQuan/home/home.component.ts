@@ -11,6 +11,8 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
   images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
+  eventsArray: any = [{ title: 'event 1', start: '2018-11-02' }];
+
   calendarOptions: Options;
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
@@ -28,7 +30,7 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
         center: 'title',
         right: ''
       },
-      events: [],
+      events: this.eventsArray,
       height: 'auto',
       contentHeight: 'auto',
       fixedWeekCount: false

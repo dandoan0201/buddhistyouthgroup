@@ -1,59 +1,53 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]='["/"]'>
+      <img src="../../assets/gdpt.gif" style="width:50px;height:50px;" />
+      GDPT Lieu Quan
+    </a>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]='["/"]'>
-    <img src="../../assets/gdpt.gif" style="width:50px;height:50px;" />
-    GDPT Lieu Quan
-  </a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mission</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Get Involved</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Huynh Truong</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Oanh Vu Nam & Nu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Thieu Nam & Nu</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
-
-<br />
-<br />
-<br />
-<div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mission</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Get Involved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Huynh Truong</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Oanh Vu Nam & Nu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Thieu Nam & Nu</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="container">
   <div class="row">
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide>
-        <img src="../../../assets/camp 2016.jpg" alt="Random first slide">
+        <img src="../../../assets/camp 2016.jpg" alt="Random first slide" class="img-thumbnail">
         <div class="carousel-caption">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img src="../../../assets/lieu quan 2018.jpg" alt="Random second slide">
+        <img src="../../../assets/lieu quan 2018.jpg" alt="Random second slide" class="img-thumbnail img-fluid">
         <div class="carousel-caption">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img [src]="images[2]" alt="Random third slide">
+        <img [src]="images[2]" alt="Random third slide" class="img-thumbnail">
         <div class="carousel-caption">
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -66,7 +60,7 @@
 
 <br />
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="">
       <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <strong> {{ calendarDateYear }} </strong>  &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
