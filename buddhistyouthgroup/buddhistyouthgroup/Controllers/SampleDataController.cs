@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using buddhistyouthgroup.Models;
 
 namespace buddhistyouthgroup.Controllers
 {
@@ -10,6 +11,24 @@ namespace buddhistyouthgroup.Controllers
     public class SampleDataController : Controller
     {
 
+        [HttpGet("[action]")]
+        public List<Event> GetEvents()
+        {
+            List<Event> list = new List<Event>();
+
+            Event obj = new Event();
+            obj.title = "No Sinh Hoat: Huynh Truong Conference";
+            obj.start = "2018-10-28";
+            obj.month = "Oct";
+            obj.day = "10";
+            obj.weekday = "Sun";
+            obj.time = "12:00 PM";
+
+            list.Add(obj);
+
+
+            return list;
+        }
 
         [HttpPost("[action]")]
         public JsonResult Login([FromBody] object obj)
