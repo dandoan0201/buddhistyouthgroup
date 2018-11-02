@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CalendarComponent } from 'ng-fullcalendar';
+import { Component, OnInit, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,8 +12,17 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
   images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
   obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };
-  eventsArray: any[] = [{ title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28', month: 'Oct', day: '10', weekday:'Sun', time: '12:00 PM'}];
+  eventsArray: any[];
 
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+
+    http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
+
+      this.eventsArray = result as any[];
+
+    }, error => console.error(error));
+
+  }
 
   ngOnInit() {
     $(document).ready(function () {

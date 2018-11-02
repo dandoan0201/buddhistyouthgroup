@@ -3,6 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import * as $ from 'jquery';
 window['jQuery'] = window['$'] = $;
 import 'bootstrap';
+import 'fullcalendar';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
