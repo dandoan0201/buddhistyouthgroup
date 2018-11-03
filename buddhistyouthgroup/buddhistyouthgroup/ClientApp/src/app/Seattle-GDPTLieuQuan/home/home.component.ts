@@ -27,6 +27,7 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function () {
 
+
       $.ajax({
         url: "api/SampleData/GetEvents",
         dataType: "json",
@@ -47,11 +48,14 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
             eventRender: function (event, element) {
               element.popover({
                 content: event.title,
-                placement: "top",
-                trigger: "click"
+                trigger: "hover",
+                placement: "bottom"
               })
             }
           });
+
+          let date = $('#calendar').fullCalendar('getDate');
+          $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
 
         },
         error: (response, errorMessage) => {
@@ -88,23 +92,36 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   //  };
   //}
 
+  ChangeMonth(monthNumber) {
 
-  //ChangeMonth(monthNumber) {
+    $(function () {
+      let newDate = $('#calendar').fullCalendar('getDate');
+      newDate = newDate.month(monthNumber);
+      $('#calendar').fullCalendar('gotoDate', newDate);
+    });
 
-  //  let newDate = this.ucCalendar.fullCalendar('getDate');
-  //  newDate = newDate.month(monthNumber);
+    //let newDate = this.ucCalendar.fullCalendar('getDate');
+    //newDate = newDate.month(monthNumber);
 
-  //  this.ucCalendar.fullCalendar('gotoDate', newDate);
-  //}
+    //this.ucCalendar.fullCalendar('gotoDate', newDate);
+  }
 
-  //MoveYearBackward() {
-  //  this.ucCalendar.fullCalendar('prevYear');
-  //  this.calendarDateYear = this.ucCalendar.fullCalendar('getDate').get('year');
-  //}
+  MoveYearBackward() {
+    $(function () {
+      $('#calendar').fullCalendar('prevYear');
 
-  //MoveYearForward() {
-  //  this.ucCalendar.fullCalendar('nextYear');
-  //  this.calendarDateYear = this.ucCalendar.fullCalendar('getDate').get('year');
-  //}
+      let date = $('#calendar').fullCalendar('getDate');
+      $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
+    });
+  }
+
+  MoveYearForward() {
+    $(function () {
+      $('#calendar').fullCalendar('nextYear');
+
+      let date = $('#calendar').fullCalendar('getDate');
+      $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
+    });
+  }
 
 }
