@@ -51,7 +51,9 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
                 trigger: "hover",
                 placement: "bottom"
               })
-            }
+            },
+            eventColor: '#068104',
+            eventTextColor: '#FFFFFF'
           });
 
           let date = $('#calendar').fullCalendar('getDate');
