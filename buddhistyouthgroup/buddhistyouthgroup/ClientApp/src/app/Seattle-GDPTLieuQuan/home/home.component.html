@@ -37,21 +37,21 @@
   <div class="row">
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide>
-        <img src="../../../assets/camp 2016.jpg" alt="Random first slide" class="img-thumbnail">
+        <img src="../../../assets/camp 2016.jpg"  width="1000" alt="Random first slide" class="img-thumbnail">
         <div class="carousel-caption">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img src="../../../assets/lieu quan 2018.jpg" alt="Random second slide" class="img-thumbnail img-fluid">
+        <img src="../../../assets/lieu quan 2015.jpg" width="1000" alt="Random second slide" class="img-thumbnail img-fluid">
         <div class="carousel-caption">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
-        <img [src]="images[2]" alt="Random third slide" class="img-thumbnail">
+        <img [src]="images[2]" alt="Random third slide" width="1000" class="img-thumbnail">
         <div class="carousel-caption">
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -66,8 +66,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-xl-2">
       <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <span id="calendarDateYear"></span> &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
+      <br />
       <br />
       &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-light" (click)="ChangeMonth(0)">January</button>
       <br />
@@ -94,17 +95,13 @@
       &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-light" (click)="ChangeMonth(11)">December</button>
     </div>
 
-    <div class="col-xl">
+    <div class="col-xl-6">
 
-      <!--<div *ngIf="calendarOptions">
-        <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail.event)" (eventDrop)="updateEvent($event.detail)"
-                         (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
-      </div>-->
       <div id="calendar"></div>
 
     </div>
 
-    <div class="col-xl">
+    <div class="col-xl-4" style="left:50px;">
       <h3><strong>Upcoming Events</strong></h3>
       <div *ngFor="let item of eventsArray">
         <div class="mini-date-row">
@@ -113,7 +110,7 @@
             <div class="mini-calendar-day"> {{item.day}} </div>
             <div class="mini-calendar-weekday"> {{item.weekday}} </div>
           </div>
-          <div class="mini-calendar-event">
+          <div class="mini-calendar-event" style="padding-right:50px;">
             <strong>{{item.time}}</strong> {{item.title}}
           </div>
         </div>
