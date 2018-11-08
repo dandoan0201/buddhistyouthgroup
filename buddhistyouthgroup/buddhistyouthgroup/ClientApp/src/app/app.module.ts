@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { NeedAuthGuard } from '../app/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,10 @@ import { StaffComponent } from './staff/staff.component';
 import { GetInvolvedComponent } from './getInvolved/getInvolved.component';
 import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.component';
 import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
+import { SeattleGDPTLieuQuanOanhVuComponent } from './Seattle-GDPTLieuQuan/oanhvu/oanhvu.component';
+import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canhMem/canhMem.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,6 +37,8 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
     GetInvolvedComponent,
     BuildYouthGroupComponent,
     SeattleGDPTLieuQuanHomeComponent,
+    SeattleGDPTLieuQuanOanhVuComponent,
+    SeattleGDPTLieuQuanCanhMemComponent,
     LoginComponent
   ],
   imports: [
@@ -39,7 +46,8 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
     HttpClientModule,
     FormsModule,
     AngularFontAwesomeModule,
-    NgbModule,
+    //NgbModule,
+    PdfViewerModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
@@ -49,6 +57,8 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
       { path: 'getInvolved', component: GetInvolvedComponent },
       { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
       { path: 'gdptlieuquan', component: SeattleGDPTLieuQuanHomeComponent },
+      { path: 'gdptlieuquan/oanhvu', component: SeattleGDPTLieuQuanOanhVuComponent },
+      { path: 'gdptlieuquan/oanhvu/canhmem', component: SeattleGDPTLieuQuanCanhMemComponent },
       { path: 'login', component: LoginComponent },
     ])
   ],
@@ -58,3 +68,5 @@ import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/ho
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

@@ -1,0 +1,58 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]='["/"]'>
+      <img src="../../assets/gdpt.gif" style="width:50px;height:50px;" />
+      GDPT Lieu Quan
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul id="GDPTLieuQuanNavBar" class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]='["/gdptlieuquan"]'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mission</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Get Involved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Huynh Truong</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]='["/gdptlieuquan/oanhvu"]'>Oanh Vu Nam & Nu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Thieu Nam & Nu</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-2">
+
+    </div>
+    <div class="col-xl-10">
+      <pdf-viewer [src]="pdfSrc"
+                  [render-text]="true"
+                  [show-all]="false"
+                  [page]="page"
+                  [autoresize]="true"
+                  (after-load-complete)="callBackFn($event)"
+                  style="display: block;"></pdf-viewer>
+      <br />
+      <div> <u>{{page}}</u> of ___ pages </div> <button type="button" class="btn btn-light" (click)="Next()">Next</button>
+      <!--<input [(ngModel)]="page" type="text" id="page" />-->
+    </div>
+  </div>
+</div>
