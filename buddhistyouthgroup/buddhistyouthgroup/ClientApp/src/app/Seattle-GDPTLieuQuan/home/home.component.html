@@ -81,7 +81,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-2">
+    <div class="col-sm-2 d-none d-sm-block">
       <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <span id="calendarDateYear"></span> &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
       <br />
       <br />
@@ -110,13 +110,13 @@
       &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-light" (click)="ChangeMonth(11)">December</button>
     </div>
 
-    <div class="col-xl-6">
+    <div class="col-sm-6 d-none d-sm-block">
 
       <div id="calendar"></div>
 
     </div>
 
-    <div class="col-xl-4" style="left:50px;">
+    <div class="col-sm-4 d-none d-sm-block" style="left:50px;">
       <h3><strong>Upcoming Events</strong></h3>
       <div *ngFor="let item of eventsArray">
         <div class="mini-date-row">

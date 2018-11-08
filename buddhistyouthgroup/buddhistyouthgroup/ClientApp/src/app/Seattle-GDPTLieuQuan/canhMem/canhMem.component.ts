@@ -33,9 +33,6 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
       { "File": "Lecture 8", "Date": "11/11/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 8.pdf" },
     ];
 
-
-
-
   }
 
   View(selectedPdf, rowSelected) {

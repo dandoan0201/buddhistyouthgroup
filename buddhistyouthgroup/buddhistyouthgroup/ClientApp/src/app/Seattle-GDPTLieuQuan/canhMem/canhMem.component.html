@@ -39,7 +39,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-3">
+    <div class="col-sm-3 d-none d-lg-block d-none">
       <div id="pdfviewer" style="overflow: scroll;height: 500px;width: 280px;">
         <table class="table">
           <thead>
@@ -59,7 +59,7 @@
         </table>
       </div>
     </div>
-    <div class="col-xl-9">
+    <div class="col-sm-9 d-none d-lg-block d-none">
       <pdf-viewer [hidden]="hideElement"
                   [src]="pdfSrc"
                   [render-text]="true"
