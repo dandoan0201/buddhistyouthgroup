@@ -39,20 +39,51 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-2">
-
+    <div class="col-xl-3">
+      <div id="pdfviewer" style="overflow: scroll;height: 500px;width: 280px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="text-align:center;">File</th>
+              <th style="text-align:center;">Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of pdfFiles; let i = index" [class.active]="i == selectedRow">
+              <td>{{file.File}}</td>
+              <td>{{file.Date}}</td>
+              <td> <button type="button" class="btn btn-outline-secondary" (click)="View(file, i)"> View </button> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="col-xl-10">
-      <pdf-viewer [src]="pdfSrc"
+    <div class="col-xl-9">
+      <pdf-viewer [hidden]="hideElement"
+                  [src]="pdfSrc"
                   [render-text]="true"
                   [show-all]="false"
                   [page]="page"
+                  [original-size]="false"
                   [autoresize]="true"
-                  (after-load-complete)="callBackFn($event)"
-                  style="display: block;"></pdf-viewer>
+                  (after-load-complete)="callBackFunction($event)"
+                  style="display:block;outline:#6c757d solid 1px;"></pdf-viewer>
       <br />
-      <div> <u>{{page}}</u> of ___ pages </div> <button type="button" class="btn btn-light" (click)="Next()">Next</button>
-      <!--<input [(ngModel)]="page" type="text" id="page" />-->
+      <div class="row">
+        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Previous()" style="bottom:-6px;position: absolute;left:274px;">
+          Previous
+        </button>
+        <div style="padding-left:376px;">
+          <u><input [hidden]="hideElement" [(ngModel)]="page" type="text" id="page" /></u>
+          <span [hidden]="hideElement"> of </span>
+          {{totalPages}}
+          <span [hidden]="hideElement"> pages </span>
+        </div>
+        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Next()" style="bottom:-6px;left:498px;position: absolute;">
+          Next
+        </button>
+      </div>
     </div>
   </div>
 </div>
