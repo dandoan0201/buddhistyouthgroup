@@ -34,7 +34,7 @@
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.9.0",
     "ng-fullcalendar": "^1.6.1",
-    "ng2-pdf-viewer": "^5.2.0",
+    "ng2-pdf-viewer": "4.0.0",
     "pdfjs-dist": "^2.0.943",
     "popper.js": "^1.14.4",
     "rxjs": "^6.3.3",

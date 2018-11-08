@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { NeedAuthGuard } from '../app/auth.guard';
@@ -46,7 +45,6 @@ import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canh
     HttpClientModule,
     FormsModule,
     AngularFontAwesomeModule,
-    //NgbModule,
     PdfViewerModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

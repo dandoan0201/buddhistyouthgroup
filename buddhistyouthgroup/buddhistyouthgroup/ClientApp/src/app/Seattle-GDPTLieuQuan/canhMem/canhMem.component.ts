@@ -20,8 +20,6 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
   hideElement: boolean = true;
 
 
-  //@ViewChild(PdfViewerComponent) private pdfComponent: PdfViewerComponent;
-
   constructor() {
 
     this.pdfFiles = [{ "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
@@ -42,6 +40,7 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
 
   View(selectedPdf, rowSelected) {
 
+    this.page = 1;
     this.selectedRow = rowSelected;
     this.pdfSrc = selectedPdf.pdfSrc
     this.hideElement = false;

@@ -26,6 +26,15 @@ namespace buddhistyouthgroup.Controllers
 
             list.Add(obj);
 
+            Event obj2 = new Event();
+            obj2.title = "No Sinh Hoat: Thanksgiving Break";
+            obj2.start = "2018-11-25";
+            obj2.month = "Nov";
+            obj2.day = "25";
+            obj2.weekday = "Sun";
+            obj2.time = "";
+
+            list.Add(obj2);
 
             return list;
         }

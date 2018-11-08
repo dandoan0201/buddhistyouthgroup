@@ -18,7 +18,22 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
     http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
 
-      this.eventsArray = result as any[];
+
+      let array: any[] = result as any[];
+
+      let newArray: any[] = [];
+
+      let today: Date = new Date();
+
+      for (let i: number = 0; i < array.length; i++) {
+
+        let check: Date = new Date(array[i].start);
+        if (today < check) {
+          newArray.push(array[i]);
+        }
+      }
+
+      this.eventsArray = newArray;
 
     }, error => console.error(error));
 
