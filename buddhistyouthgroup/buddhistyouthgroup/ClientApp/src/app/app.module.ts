@@ -21,6 +21,7 @@ import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.comp
 import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
 import { SeattleGDPTLieuQuanOanhVuComponent } from './Seattle-GDPTLieuQuan/oanhvu/oanhvu.component';
 import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canhMem/canhMem.component';
+import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
 
 
 
@@ -38,6 +39,7 @@ import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canh
     SeattleGDPTLieuQuanHomeComponent,
     SeattleGDPTLieuQuanOanhVuComponent,
     SeattleGDPTLieuQuanCanhMemComponent,
+    PDFViewerComponent,
     LoginComponent
   ],
   imports: [

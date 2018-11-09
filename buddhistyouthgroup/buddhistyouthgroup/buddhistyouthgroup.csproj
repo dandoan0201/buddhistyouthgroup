@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
     <None Remove="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
@@ -49,6 +50,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 

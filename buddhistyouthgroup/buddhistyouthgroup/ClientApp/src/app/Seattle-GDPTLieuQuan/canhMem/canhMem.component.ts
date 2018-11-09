@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PdfViewerComponent, PDFDocumentProxy } from '../../../../node_modules/ng2-pdf-viewer';
+import { PDFViewerComponent } from '../pdfViewer/pdfViewer.component';
 
 
 @Component({
@@ -9,59 +10,71 @@ import { PdfViewerComponent, PDFDocumentProxy } from '../../../../node_modules/n
 })
 
 export class SeattleGDPTLieuQuanCanhMemComponent {
-  pdfSrc: string = '';
-  page: number = 1;
-  totalPages: number;
 
-  selectedRow: Number;
+  test: string = "canhMem";
 
-  public pdfFiles: any[];
-
-  hideElement: boolean = true;
-
+  //handleMyEvent(arg) {
+  //  console.log("in canh mem handle event", arg);
+  //}
 
   constructor() {
 
-    this.pdfFiles = [{ "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
-      { "File": "Lecture 2", "Date": "7/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 2.pdf" },
-      { "File": "Lecture 3", "Date": "9/16/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 3.pdf" },
-      { "File": "Lecture 4", "Date": "9/30/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 4.pdf" },
-      { "File": "Lecture 5", "Date": "10/7/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 5.pdf" },
-      { "File": "Lecture 6", "Date": "10/14/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 6.pdf" },
-      { "File": "Lecture 7", "Date": "10/21/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 7.pdf" },
-      { "File": "Bai Sam Hoi Slides", "Date": "11/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Bai Sam Hoi Slides.pdf" },
-      { "File": "Lecture 8", "Date": "11/11/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 8.pdf" },
-    ];
+    //this.PdfViewer.getFilesByCourse("canhmem");
 
   }
+  //pdfSrc: string = '';
+  //page: number = 1;
+  //totalPages: number;
 
-  View(selectedPdf, rowSelected) {
+  //selectedRow: Number;
 
-    this.page = 1;
-    this.selectedRow = rowSelected;
-    this.pdfSrc = selectedPdf.pdfSrc
-    this.hideElement = false;
-  }
-  callBackFunction(pdf: PDFDocumentProxy): void {
+  //public pdfFiles: any[];
 
-    this.totalPages = pdf.numPages;
-  }
+  //hideElement: boolean = true;
 
-  Previous() {
 
-    if (this.page != 1) {
-      this.page--;
-    }
+  //constructor() {
 
-  }
+  //  this.pdfFiles = [{ "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
+  //    { "File": "Lecture 2", "Date": "7/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 2.pdf" },
+  //    { "File": "Lecture 3", "Date": "9/16/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 3.pdf" },
+  //    { "File": "Lecture 4", "Date": "9/30/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 4.pdf" },
+  //    { "File": "Lecture 5", "Date": "10/7/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 5.pdf" },
+  //    { "File": "Lecture 6", "Date": "10/14/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 6.pdf" },
+  //    { "File": "Lecture 7", "Date": "10/21/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 7.pdf" },
+  //    { "File": "Bai Sam Hoi Slides", "Date": "11/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Bai Sam Hoi Slides.pdf" },
+  //    { "File": "Lecture 8", "Date": "11/11/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 8.pdf" },
+  //  ];
 
-  Next() {
+  //}
 
-    if (this.page != this.totalPages) {
-      this.page++;
-    }
+  //View(selectedPdf, rowSelected) {
 
-  }
+  //  this.page = 1;
+  //  this.selectedRow = rowSelected;
+  //  this.pdfSrc = selectedPdf.pdfSrc
+  //  this.hideElement = false;
+  //}
+  //callBackFunction(pdf: PDFDocumentProxy): void {
+
+  //  this.totalPages = pdf.numPages;
+  //}
+
+  //Previous() {
+
+  //  if (this.page != 1) {
+  //    this.page--;
+  //  }
+
+  //}
+
+  //Next() {
+
+  //  if (this.page != this.totalPages) {
+  //    this.page++;
+  //  }
+
+  //}
 
 
   //onFileSelected() {
