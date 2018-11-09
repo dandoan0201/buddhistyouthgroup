@@ -1,91 +1,49 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]='["/gdptlieuquan"]'>
-      <img src="../../assets/gdpt.gif" style="width:50px;height:50px;" />
-      GDPT Lieu Quan
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul id="GDPTLieuQuanNavBar" class="navbar-nav ">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]='["/gdptlieuquan"]'>Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mission</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Get Involved</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Huynh Truong</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]='["/gdptlieuquan/oanhvu"]'>Oanh Vu Nam & Nu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Thieu Nam & Nu</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
 
 
-<br />
 
-<app-GDPTLieuQuan-pdfViewer [course]="test"></app-GDPTLieuQuan-pdfViewer>
 
-<div class="container">
+<div class="container" *ngIf="Home">
   <div class="row">
-    <!--<div class="col-sm-3 d-none d-lg-block d-none">
-      <div id="pdfviewer" style="overflow: scroll;height: 500px;width: 280px;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="text-align:center;">File</th>
-              <th style="text-align:center;">Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let file of pdfFiles; let i = index" [class.active]="i == selectedRow">
-              <td>{{file.File}}</td>
-              <td>{{file.Date}}</td>
-              <td> <button type="button" class="btn btn-outline-secondary" (click)="View(file, i)"> View </button> </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="col-xl-3">
+      <h4>
+        <strong><u>Canh Mem Course</u></strong>
+        <!--&nbsp; <button type="button" class="btn btn-outline-secondary" *ngIf="IsGoBack" (click)="GoBack()"> Go Back </button>-->
+      </h4>
+
+      <div>
+        <br />
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Syllabus </button>
+        <br />
+        <br />
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Grades </button>
+        <br />
+        <br />
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="ViewLecture()"> Lectures </button>
+        <br />
       </div>
     </div>
-    <div class="col-sm-9 d-none d-lg-block d-none">
-      <pdf-viewer [hidden]="hideElement"
-                  [src]="pdfSrc"
-                  [render-text]="true"
-                  [show-all]="false"
-                  [page]="page"
-                  [original-size]="false"
-                  [autoresize]="true"
-                  (after-load-complete)="callBackFunction($event)"
-                  style="display:block;outline:#6c757d solid 1px;"></pdf-viewer>
-      <br />
-      <div class="row">
-        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Previous()" style="bottom:-6px;position: absolute;left:274px;">
-          Previous
-        </button>
-        <div style="padding-left:376px;">
-          <u><input [hidden]="hideElement" [(ngModel)]="page" type="text" id="page" /></u>
-          <span [hidden]="hideElement"> of </span>
-          {{totalPages}}
-          <span [hidden]="hideElement"> pages </span>
-        </div>
-        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Next()" style="bottom:-6px;left:498px;position: absolute;">
-          Next
-        </button>
+    <div class="col-xl-9">
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
       </div>
-    </div>-->
+      <button class="btn btn-outline-secondary" (click)="randomize()">Random</button>
+    </div>
   </div>
 </div>
+
+<div class="container" *ngIf="IsLectures">
+  <h4>
+    <strong><u>Canh Mem Course</u></strong>
+    &nbsp; <button type="button" class="btn btn-outline-secondary" (click)="GoBack()"> Go Back </button>
+  </h4>
+
+  <app-GDPTLieuQuan-pdfViewer [course]="course"></app-GDPTLieuQuan-pdfViewer>
+</div>
+

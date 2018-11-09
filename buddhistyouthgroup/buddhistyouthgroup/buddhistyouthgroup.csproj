@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\mission\mission.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
     <None Remove="ClientApp\src\app\staff\staff.component.ts" />
@@ -49,13 +50,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\mission\mission.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\node_modules\" />
     <Folder Include="ClientApp\src\assets\pdf\" />
   </ItemGroup>
 

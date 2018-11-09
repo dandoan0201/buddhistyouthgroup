@@ -1,8 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PdfViewerComponent, PDFDocumentProxy } from '../../../../node_modules/ng2-pdf-viewer';
-import { PDFViewerComponent } from '../pdfViewer/pdfViewer.component';
-
 
 @Component({
   selector: 'app-home-canhMem',
@@ -11,83 +8,73 @@ import { PDFViewerComponent } from '../pdfViewer/pdfViewer.component';
 
 export class SeattleGDPTLieuQuanCanhMemComponent {
 
-  test: string = "canhMem";
+  Home: boolean = true;
+  IsGoBack: boolean = false;
 
-  //handleMyEvent(arg) {
-  //  console.log("in canh mem handle event", arg);
-  //}
+  course: string = "canhMem";
+  IsLectures: boolean = false;
 
-  constructor() {
 
-    //this.PdfViewer.getFilesByCourse("canhmem");
+  constructor() { }
 
+  GoBack()
+  {
+    this.Home = true;
+    this.IsGoBack = false;
+    this.IsLectures = false;
   }
-  //pdfSrc: string = '';
-  //page: number = 1;
-  //totalPages: number;
 
-  //selectedRow: Number;
-
-  //public pdfFiles: any[];
-
-  //hideElement: boolean = true;
+  ViewLecture()
+  {
+    this.Home = false;
+    this.IsGoBack = true;
+    this.IsLectures = true;
+  }
 
 
-  //constructor() {
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+  };
+  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
 
-  //  this.pdfFiles = [{ "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
-  //    { "File": "Lecture 2", "Date": "7/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 2.pdf" },
-  //    { "File": "Lecture 3", "Date": "9/16/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 3.pdf" },
-  //    { "File": "Lecture 4", "Date": "9/30/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 4.pdf" },
-  //    { "File": "Lecture 5", "Date": "10/7/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 5.pdf" },
-  //    { "File": "Lecture 6", "Date": "10/14/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 6.pdf" },
-  //    { "File": "Lecture 7", "Date": "10/21/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 7.pdf" },
-  //    { "File": "Bai Sam Hoi Slides", "Date": "11/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Bai Sam Hoi Slides.pdf" },
-  //    { "File": "Lecture 8", "Date": "11/11/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 8.pdf" },
-  //  ];
+  public barChartData: any[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Spring Quarter' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Fall Quarter' },
+    //{ data: [38, 18, 70, 59, 66, 17, 60], label: 'Winter Quarter' },
+  ];
 
-  //}
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
 
-  //View(selectedPdf, rowSelected) {
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 
-  //  this.page = 1;
-  //  this.selectedRow = rowSelected;
-  //  this.pdfSrc = selectedPdf.pdfSrc
-  //  this.hideElement = false;
-  //}
-  //callBackFunction(pdf: PDFDocumentProxy): void {
-
-  //  this.totalPages = pdf.numPages;
-  //}
-
-  //Previous() {
-
-  //  if (this.page != 1) {
-  //    this.page--;
-  //  }
-
-  //}
-
-  //Next() {
-
-  //  if (this.page != this.totalPages) {
-  //    this.page++;
-  //  }
-
-  //}
+  public randomize(): void {
+    // Only Change 3 values
+    let data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      (Math.random() * 100),
+      56,
+      (Math.random() * 100),
+      40];
+    let clone = JSON.parse(JSON.stringify(this.barChartData));
+    clone[0].data = data;
+    this.barChartData = clone;
+    /**
+     * (My guess), for Angular to recognize the change in the dataset
+     * it has to change the dataset variable directly,
+     * so one way around it, is to clone the data, change it and then
+     * assign it;
+     */
+  }
 
 
-  //onFileSelected() {
-  //  let img: any = document.querySelector('#file');
-
-  //  if (typeof (FileReader) !== 'undefined') {
-  //    let reader = new FileReader();
-
-  //    reader.onload = (e: any) => {
-  //      this.pdfSrc = e.target.result;
-  //    };
-
-  //    reader.readAsArrayBuffer(img.files[0]);
-  //  }
-  //}
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
+declare var $: any;
 
 @Component({
-  selector: 'app-home',
+  selector: 'SeattleGDPTLieuQuan-home',
   templateUrl: './home.component.html',
 })
 
@@ -14,10 +15,12 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };
   eventsArray: any[];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
+
+
+    this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
 
     http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
-
 
       let array: any[] = result as any[];
 
@@ -40,6 +43,9 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
+
     $(document).ready(function () {
 
 

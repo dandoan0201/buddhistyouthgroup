@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-oanhvu',
@@ -9,5 +9,10 @@ import { HttpClient } from '@angular/common/http';
 
 export class SeattleGDPTLieuQuanOanhVuComponent {
 
+
+  constructor(private router: Router) {
+
+    this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
+  }
 
 }
