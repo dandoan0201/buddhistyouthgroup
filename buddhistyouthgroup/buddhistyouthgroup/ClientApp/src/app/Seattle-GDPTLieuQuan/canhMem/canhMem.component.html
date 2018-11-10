@@ -25,6 +25,7 @@
     <div class="col-xl-9">
       <div style="display: block">
         <canvas baseChart
+                [colors]="barChartColors"
                 [datasets]="barChartData"
                 [labels]="barChartLabels"
                 [options]="barChartOptions"
@@ -33,17 +34,19 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
       </div>
-      <button class="btn btn-outline-secondary" (click)="randomize()">Random</button>
+      <!--<button class="btn btn-outline-secondary" (click)="randomize()">Random</button>-->
     </div>
   </div>
 </div>
 
-<div class="container" *ngIf="IsLectures">
-  <h4>
-    <strong><u>Canh Mem Course</u></strong>
-    &nbsp; <button type="button" class="btn btn-outline-secondary" (click)="GoBack()"> Go Back </button>
-  </h4>
-
+<div *ngIf="IsLectures">
+  <div class="container">
+    <h4>
+      <strong><u>Canh Mem Course</u></strong>
+      &nbsp; <button type="button" class="btn btn-outline-secondary" (click)="GoBack()"> Go Back </button>
+    </h4>
+  </div>
+  <br />
   <app-GDPTLieuQuan-pdfViewer [course]="course"></app-GDPTLieuQuan-pdfViewer>
 </div>
 

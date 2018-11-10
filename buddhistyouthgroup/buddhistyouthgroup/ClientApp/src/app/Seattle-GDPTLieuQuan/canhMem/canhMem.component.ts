@@ -31,18 +31,68 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
     this.IsLectures = true;
   }
 
+  public barChartColors: Array<any> = [
+    {
+    backgroundColor: [
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)',
+      'rgba(255,255,0,1)'
+    ],
+  },
+  {
+    backgroundColor: [
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)',
+    ],
+  }
+];
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: string[] = [
+    'Melinda', 'Anny', 'Julia', 'Emily',
+    'Ben', 'Darwyn', 'Khang', 'Elalne',
+    'Bao Chau', 'Thuy', 'Lena', 'Annie',
+    'Casey', 'Tommy', 'Kim', 'Jayden Le',
+    'Jayden N.'
+  ];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Spring Quarter' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Fall Quarter' },
+    { data: [42.2, 0, 54, 18, 32.2, 42.16, 35.76, 58.2, 57.6, 65.8, 50.24, 58.8, 64.8, 61.4, 25, 11.04, 0], label: 'Spring Quarter' },
+    { data: [11, 56, 45, 62, 35, 56, 52, 75, 69, 51, 53, 77, 52, 66, 42, 59, 42], label: 'Fall Quarter' },
     //{ data: [38, 18, 70, 59, 66, 17, 60], label: 'Winter Quarter' },
   ];
 
