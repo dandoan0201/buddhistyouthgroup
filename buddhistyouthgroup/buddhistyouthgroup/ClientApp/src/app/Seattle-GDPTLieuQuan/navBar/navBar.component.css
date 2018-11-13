@@ -6,6 +6,7 @@ li .glyphicon {
 li.link-active a,
 li.link-active a:hover,
 li.link-active a:focus {
+  color: red;
   /*background-color: #4189C7;
   color: white;*/
 }
@@ -17,6 +18,10 @@ li.link-active a:focus {
   left: 0;
   right: 0;
   z-index: 1;
+}
+
+.bg-GDPTLieuQuan {
+  background-color:whitesmoke;
 }
 
 /*.dropdown:hover > .dropdown-menu {
