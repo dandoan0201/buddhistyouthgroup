@@ -1,15 +1,38 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 declare var $: any;
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+  stagger,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'SeattleGDPTLieuQuan-home',
   templateUrl: './home.component.html',
+  animations: [
+    trigger('slideup', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 0 }),
+        animate('100ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+  ]
 })
 
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
+  @HostBinding('@slideup')
 
   images = [1, 2, 3].map(() => `https://picsum.photos/1000/500?random&t=${Math.random()}`);
   obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };

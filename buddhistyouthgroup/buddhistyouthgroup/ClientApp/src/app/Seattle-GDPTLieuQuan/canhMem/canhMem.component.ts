@@ -1,9 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+  stagger,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home-canhMem',
   templateUrl: './canhMem.component.html',
+  animations: [
+    trigger('slideup', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 0 }),
+        animate('100ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+  ]
 })
 
 export class SeattleGDPTLieuQuanCanhMemComponent {

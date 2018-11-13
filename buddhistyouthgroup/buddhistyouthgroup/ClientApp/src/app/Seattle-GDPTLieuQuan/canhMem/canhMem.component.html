@@ -2,7 +2,7 @@
 
 
 
-<div class="container" *ngIf="Home">
+<div class="container" *ngIf="Home" [@slideup]="Home">
   <div class="row">
     <div class="col-xl-3">
       <h4>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div *ngIf="IsLectures">
+<div *ngIf="IsLectures" [@slideup]="Home">
   <div class="container">
     <h4>
       <strong><u>Canh Mem Course</u></strong>
