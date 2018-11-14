@@ -32,9 +32,8 @@ import {
 
 export class SeattleGDPTLieuQuanOanhVuComponent implements OnInit {
 
-  @HostBinding('@slideup')
 
-  public animatePage = true;
+  animation: boolean = true;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 

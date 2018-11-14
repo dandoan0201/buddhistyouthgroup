@@ -1,6 +1,6 @@
 
 
-<div class="row">
+<div class="row" [@slideup]="animation">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -45,7 +45,7 @@
 
 <br />
 
-<div class="row">
+<div class="row" [@slideup]="animation">
   <div class="col-sm-2 d-none d-sm-block">
     <button type="button" class="btn btn-outline-dark" (click)="MoveYearBackward()"><fa name="angle-double-left"></fa></button>  &nbsp; <span id="calendarDateYear"></span> &nbsp; <button type="button" class="btn btn-outline-dark" (click)="MoveYearForward()"><fa name="angle-double-right"></fa></button>
     <br />

@@ -32,7 +32,9 @@ import {
 
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
-  @HostBinding('@slideup')
+  //@HostBinding('@slideup')
+
+  animation: boolean = true;
 
   images = [1, 2, 3].map(() => `https://picsum.photos/1000/500?random&t=${Math.random()}`);
   obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };
