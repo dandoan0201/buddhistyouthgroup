@@ -37,7 +37,7 @@ export class SeattleGDPTLieuQuanOanhVuComponent implements OnInit {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 
-    this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
+    //this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
   }
 
   ngOnInit() { }

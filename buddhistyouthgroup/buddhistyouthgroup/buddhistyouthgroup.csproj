@@ -30,6 +30,8 @@
     <None Remove="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
     <None Remove="ClientApp\src\app\customer.service.ts" />
     <None Remove="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
+    <None Remove="ClientApp\src\app\layouts\gdptlieuquan-layout.component.ts" />
+    <None Remove="ClientApp\src\app\layouts\home-layout.component.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\mission\mission.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
@@ -46,6 +48,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\customer.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\layouts\gdptlieuquan-layout.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\layouts\home-layout.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mission\mission.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />

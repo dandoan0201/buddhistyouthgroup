@@ -44,7 +44,9 @@ import {
 
 export class HomeComponent {
 
-  isOpen = true;
+  HomeMenu: boolean = true;
+
+  isOpen: boolean = true;
 
   toggle() {
     this.isOpen = !this.isOpen;
