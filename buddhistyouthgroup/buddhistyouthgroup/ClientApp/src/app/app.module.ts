@@ -32,6 +32,7 @@ import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canh
 
 
 import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
+import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer-syllabus.component';
 
 
 
@@ -55,7 +56,9 @@ import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.c
     SeattleGDPTLieuQuanHomeComponent,
     SeattleGDPTLieuQuanOanhVuComponent,
     SeattleGDPTLieuQuanCanhMemComponent,
+
     PDFViewerComponent,
+    PDFViewerSyllabusComponent,
     
     LoginComponent
   ],

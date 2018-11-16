@@ -35,7 +35,7 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
 
   course: string = "canhMem";
   IsLectures: boolean = false;
-
+  IsSyllabus: boolean = false;
 
   constructor() { }
 
@@ -43,6 +43,15 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
   {
     this.Home = true;
     this.IsGoBack = false;
+    this.IsSyllabus = false;
+    this.IsLectures = false;
+  }
+
+  ViewSyllabus()
+  {
+    this.Home = false;
+    this.IsGoBack = true;
+    this.IsSyllabus = true;
     this.IsLectures = false;
   }
 
@@ -51,6 +60,7 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
     this.Home = false;
     this.IsGoBack = true;
     this.IsLectures = true;
+    this.IsSyllabus = false;
   }
 
   public barChartColors: Array<any> = [
