@@ -111,6 +111,47 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
         }
       });
 
+      $.ajax({
+        url: "api/SampleData/GetEvents",
+        dataType: "json",
+        success: response => {
+
+          $('#calendar2').fullCalendar({
+            editable: true,
+            eventLimit: false,
+            header: {
+              left: 'prev',
+              center: 'title',
+              right: 'next'
+            },
+            //buttonIcons: {
+            //  prev: 'left-single-arrow',
+            //  next: 'right-single-arrow'
+            //},
+            events: response,
+            height: 'auto',
+            contentHeight: 'auto',
+            fixedWeekCount: false,
+            eventRender: function (event, element) {
+              element.popover({
+                content: event.title,
+                trigger: "hover",
+                placement: "bottom"
+              })
+            },
+            eventColor: '#068104',
+            eventTextColor: '#FFFFFF'
+          });
+
+          let date = $('#calendar').fullCalendar('getDate');
+          $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
+
+        },
+        error: (response, errorMessage) => {
+          console.log(errorMessage);
+        }
+      });
+
 
     });
   }
