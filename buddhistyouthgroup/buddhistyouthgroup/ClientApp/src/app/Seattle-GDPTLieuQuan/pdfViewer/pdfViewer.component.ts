@@ -34,6 +34,7 @@ export class PDFViewerComponent implements AfterViewInit, OnInit {
       { "File": "Lecture 7", "Date": "10/21/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 7.pdf" },
       { "File": "Bai Sam Hoi Slides", "Date": "11/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Bai Sam Hoi Slides.pdf" },
       { "File": "Lecture 8", "Date": "11/11/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 8.pdf" },
+      { "File": "Lecture 9", "Date": "11/18/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 9.pdf" },
       ];
     }
   }
