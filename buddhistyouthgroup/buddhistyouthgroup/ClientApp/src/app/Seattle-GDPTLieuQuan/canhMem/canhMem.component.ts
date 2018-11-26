@@ -63,6 +63,12 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
     this.IsSyllabus = false;
   }
 
+  // todo:  a popup to email the teacher accordingly 
+  Email()
+  {
+
+  }
+
   public barChartColors: Array<any> = [
     {
     backgroundColor: [

@@ -32,8 +32,6 @@ import {
 
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
-  //@HostBinding('@slideup')
-
   animation: boolean = true;
 
   images = [1, 2, 3].map(() => `https://picsum.photos/1000/500?random&t=${Math.random()}`);
@@ -43,12 +41,10 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 
 
-    this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
-
     http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
 
       let array: any[] = result as any[];
-
+      console.log(array);
       let newArray: any[] = [];
 
       let today: Date = new Date();
@@ -68,8 +64,6 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    //this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
 
     $(document).ready(function () {
 
@@ -124,10 +118,6 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
               center: 'title',
               right: 'next'
             },
-            //buttonIcons: {
-            //  prev: 'left-single-arrow',
-            //  next: 'right-single-arrow'
-            //},
             events: response,
             height: 'auto',
             contentHeight: 'auto',
@@ -156,30 +146,9 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
     });
   }
 
-  //calendarOptions: Options;
-
-  //@ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
   calendarDateYear: any = new Date().getFullYear();
 
-  //constructor() { }
-
-  //ngOnInit() {
-  //  this.calendarOptions = {
-  //    editable: true,
-  //    eventLimit: false,
-  //    header: {
-  //      left: '',
-  //      center: 'title',
-  //      right: ''
-  //    },
-  //    events: this.eventsArray,
-  //    height: 'auto',
-  //    contentHeight: 'auto',
-  //    fixedWeekCount: false,
-     
-  //  };
-  //}
 
   ChangeMonth(monthNumber) {
 
@@ -189,10 +158,6 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
       $('#calendar').fullCalendar('gotoDate', newDate);
     });
 
-    //let newDate = this.ucCalendar.fullCalendar('getDate');
-    //newDate = newDate.month(monthNumber);
-
-    //this.ucCalendar.fullCalendar('gotoDate', newDate);
   }
 
   MoveYearBackward() {

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ChartsModule } from 'ng2-charts';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 import { NeedAuthGuard } from '../app/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -70,6 +71,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     AngularFontAwesomeModule,
     PdfViewerModule,
     ChartsModule,
+    LoadingBarHttpClientModule,
     RouterModule.forRoot([
 
       {

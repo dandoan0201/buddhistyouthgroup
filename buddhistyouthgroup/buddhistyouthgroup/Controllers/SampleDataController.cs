@@ -10,6 +10,7 @@ namespace buddhistyouthgroup.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        private buddhistyouthgroupContext database;
 
         [HttpGet("[action]")]
         public List<Event> GetEvents()
@@ -36,6 +37,26 @@ namespace buddhistyouthgroup.Controllers
 
             list.Add(obj2);
 
+            Event obj3 = new Event();
+            obj3.title = "No Sinh Hoat: Winter Break";
+            obj3.start = "2018-12-23";
+            obj3.month = "Dec";
+            obj3.day = "23";
+            obj3.weekday = "Sun";
+            obj3.time = "";
+
+            list.Add(obj3);
+
+            Event obj4 = new Event();
+            obj4.title = "No Sinh Hoat: Winter Break";
+            obj4.start = "2018-12-30";
+            obj4.month = "Dec";
+            obj4.day = "30";
+            obj4.weekday = "Sun";
+            obj4.time = "";
+
+            list.Add(obj4);
+
             return list;
         }
 
@@ -52,6 +73,21 @@ namespace buddhistyouthgroup.Controllers
 
             var test = obj;
             return Json(new { token = "test" });
+        }
+
+        [HttpPost("[action]")]
+        public JsonResult Login2([FromBody] object user)
+        {
+            bool isLoginValid = false;
+
+            //var login = database.Users.Where(s => s.Username == user.Username && s.Password == user.Password);
+
+            //if (login != null)
+            //{
+            //    isLoginValid = true;
+            //}
+
+            return Json(new { result = isLoginValid });
         }
 
         private static string[] Summaries = new[]
