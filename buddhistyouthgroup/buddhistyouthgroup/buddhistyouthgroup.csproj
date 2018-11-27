@@ -36,6 +36,7 @@
     <None Remove="ClientApp\src\app\layouts\home-layout.component.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\mission\mission.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
@@ -55,6 +56,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\layouts\home-layout.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mission\mission.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />

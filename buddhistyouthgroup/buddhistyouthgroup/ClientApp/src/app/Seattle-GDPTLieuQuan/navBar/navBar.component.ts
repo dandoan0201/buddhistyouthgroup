@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -15,7 +16,7 @@ export class SeattleGDPTLieuQuanNavBarComponent {
 
   IsLogin: boolean = false;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
   }
 
   Login() {
@@ -23,19 +24,39 @@ export class SeattleGDPTLieuQuanNavBarComponent {
     body = body.set("username", this.username);
     body = body.set("password", this.password);
 
-    this.http.post<any>(this.baseUrl + 'api/Admin/Login', body).subscribe(result => {
+    //const redirectUrl = this.route['_routerState']['url'];
 
-      console.log(result);
+    this.http.post<any>(this.baseUrl + 'api/Admin/Login', body).subscribe(result => {
+;
       this.IsLogin = result;
-      if (result == false) {
+      if (this.IsLogin == false)
+      {
         alert("Username and Password invalid");
       }
+      else if (this.IsLogin == true)
+      {
+        this.router.navigateByUrl(
+          this.router.createUrlTree(
+            ['gdptlieuquan/adminHome'], {
+            }
+          )
+        );
+      }
+
+
 
     }, error => console.log(error));
   }
 
   Logout() {
     this.IsLogin = false;
+
+    this.router.navigateByUrl(
+      this.router.createUrlTree(
+        ['/gdptlieuquan'], {
+        }
+      )
+    );
   }
 
   collapse() {

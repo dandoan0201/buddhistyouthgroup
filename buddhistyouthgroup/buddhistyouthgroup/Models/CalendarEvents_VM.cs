@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace buddhistyouthgroup.Models
 {
-    public partial class CalendarEvents
+    public class CalendarEvents_VM
     {
         public int Id { get; set; }
         public string EventName { get; set; }
@@ -14,5 +16,7 @@ namespace buddhistyouthgroup.Models
         public string Weekday { get; set; }
         public string Time { get; set; }
         public bool? IsDeleted { get; set; }
+        public string title { get; set; }
+        public string start { get; set; }
     }
 }

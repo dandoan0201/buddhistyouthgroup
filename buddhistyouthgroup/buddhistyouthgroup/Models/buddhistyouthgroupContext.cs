@@ -15,6 +15,7 @@ namespace buddhistyouthgroup.Models
         {
         }
 
+        public virtual DbSet<CalendarEvents> CalendarEvents { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +29,25 @@ namespace buddhistyouthgroup.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CalendarEvents>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Day).IsUnicode(false);
+
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
+
+                entity.Property(e => e.EventName).IsUnicode(false);
+
+                entity.Property(e => e.Month).IsUnicode(false);
+
+                entity.Property(e => e.StartDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Time).IsUnicode(false);
+
+                entity.Property(e => e.Weekday).IsUnicode(false);
+            });
+
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");

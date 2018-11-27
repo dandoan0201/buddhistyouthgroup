@@ -30,6 +30,7 @@ import { SeattleGDPTLieuQuanNavBarComponent } from './Seattle-GDPTLieuQuan/navBa
 import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
 import { SeattleGDPTLieuQuanOanhVuComponent } from './Seattle-GDPTLieuQuan/oanhvu/oanhvu.component';
 import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canhMem/canhMem.component';
+import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/adminHome/adminHome.component';
 
 
 import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
@@ -57,6 +58,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     SeattleGDPTLieuQuanHomeComponent,
     SeattleGDPTLieuQuanOanhVuComponent,
     SeattleGDPTLieuQuanCanhMemComponent,
+    SeattleGDPTLieuQuanAdminHomeComponent,
 
     PDFViewerComponent,
     PDFViewerSyllabusComponent,
@@ -90,6 +92,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
           { path: '', component: SeattleGDPTLieuQuanHomeComponent },
           { path: 'oanhvu', component: SeattleGDPTLieuQuanOanhVuComponent },
           { path: 'oanhvu/canhmem', component: SeattleGDPTLieuQuanCanhMemComponent },
+          { path: 'adminHome', component: SeattleGDPTLieuQuanAdminHomeComponent },
         ]
       },
 

@@ -41,7 +41,7 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 
 
-    http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
+    http.get<any[]>(baseUrl + 'api/Admin/GetCalendarEvents').subscribe(result => {
 
       let array: any[] = result as any[];
       console.log(array);
@@ -69,7 +69,7 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
 
       $.ajax({
-        url: "api/SampleData/GetEvents",
+        url: "api/Admin/GetCalendarEvents",
         dataType: "json",
         success: response => {
 
@@ -105,42 +105,42 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
         }
       });
 
-      $.ajax({
-        url: "api/SampleData/GetEvents",
-        dataType: "json",
-        success: response => {
+      //$.ajax({
+      //  url: "api/SampleData/GetEvents",
+      //  dataType: "json",
+      //  success: response => {
 
-          $('#calendar2').fullCalendar({
-            editable: true,
-            eventLimit: false,
-            header: {
-              left: 'prev',
-              center: 'title',
-              right: 'next'
-            },
-            events: response,
-            height: 'auto',
-            contentHeight: 'auto',
-            fixedWeekCount: false,
-            eventRender: function (event, element) {
-              element.popover({
-                content: event.title,
-                trigger: "hover",
-                placement: "bottom"
-              })
-            },
-            eventColor: '#068104',
-            eventTextColor: '#FFFFFF'
-          });
+      //    $('#calendar2').fullCalendar({
+      //      editable: true,
+      //      eventLimit: false,
+      //      header: {
+      //        left: 'prev',
+      //        center: 'title',
+      //        right: 'next'
+      //      },
+      //      events: response,
+      //      height: 'auto',
+      //      contentHeight: 'auto',
+      //      fixedWeekCount: false,
+      //      eventRender: function (event, element) {
+      //        element.popover({
+      //          content: event.title,
+      //          trigger: "hover",
+      //          placement: "bottom"
+      //        })
+      //      },
+      //      eventColor: '#068104',
+      //      eventTextColor: '#FFFFFF'
+      //    });
 
-          let date = $('#calendar').fullCalendar('getDate');
-          $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
+      //    let date = $('#calendar').fullCalendar('getDate');
+      //    $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
 
-        },
-        error: (response, errorMessage) => {
-          console.log(errorMessage);
-        }
-      });
+      //  },
+      //  error: (response, errorMessage) => {
+      //    console.log(errorMessage);
+      //  }
+      //});
 
 
     });
