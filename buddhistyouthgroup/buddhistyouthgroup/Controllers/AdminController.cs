@@ -64,5 +64,18 @@ namespace buddhistyouthgroup.Controllers
 
             return list2;
         }
+
+        [HttpPost("[action]")]
+        public bool IsCalendarEventAdded(string eventname, string startdate, string enddate, string starttime, string endtime)
+        {
+            DateTime ConvertDate = Convert.ToDateTime(startdate);
+            var newEvent = database.Set<CalendarEvents>();
+            newEvent.Add(new CalendarEvents
+            {
+                EventName = eventname,
+            });
+
+            return true;
+        }
     }
 }

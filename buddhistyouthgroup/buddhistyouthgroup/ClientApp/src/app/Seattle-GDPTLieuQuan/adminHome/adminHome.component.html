@@ -1,7 +1,76 @@
 <ngx-loading-bar></ngx-loading-bar>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
 
+        <label>Event Name</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="EventName" name="EventName">
+        </div>
+
+        <label>Start Date</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="StartDate" ngbDatepicker #dp="ngbDatepicker" [(ngModel)]="StartDate">
+        </div>
+
+        <label>Start Time</label>
+        <div class="input-group">
+            <ngb-timepicker [(ngModel)]="StartTime" [meridian]="meridian" name="StartTime"></ngb-timepicker>
+        </div>
+
+        <label>End Date</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="EndDate" ngbDatepicker #dp2="ngbDatepicker" [(ngModel)]="EndDate">
+        </div>
+
+        <label>End Time</label>
+        <div class="input-group">
+            <ngb-timepicker [(ngModel)]="EndTime" [meridian]="meridian" name="EndTime"></ngb-timepicker>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="Save()">Save</button>
+  </div>
+</ng-template>
 
 <div class="container">
-  Hello World
+  <br />
+  <button type="button" class="btn btn-primary float-right" (click)="Create(content)"> New Event </button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Start Date</th>
+        <th>Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of CalendarEvents">
+        <td>{{item.eventName}}</td>
+        <td>{{item.start}}</td>
+        <td>{{item.time}}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="Edit(item)"> Edit </button>
+          <button type="button" class="btn btn-danger" (click)="Delete(item)"> Delete </button>
+        </td>
+    </tbody>
+  </table>
 </div>

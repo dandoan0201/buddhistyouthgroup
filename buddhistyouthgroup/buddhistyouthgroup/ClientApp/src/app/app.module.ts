@@ -8,6 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ChartsModule } from 'ng2-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NeedAuthGuard } from '../app/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -74,6 +75,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     PdfViewerModule,
     ChartsModule,
     LoadingBarHttpClientModule,
+    NgbModule,
     RouterModule.forRoot([
 
       {
