@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -26,6 +26,7 @@ import { StaffComponent } from './staff/staff.component';
 import { GetInvolvedComponent } from './getInvolved/getInvolved.component';
 import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.component';
 
+import { SeattleGDPTLieuQuanNeedAuthGuard } from './Seattle-GDPTLieuQuan/Seattle-GDPTLieuQuan-auth.guard';
 import { SeattleGDPTLieuQuanHomeLayoutComponent } from './layouts/gdptlieuquan-layout.component';
 import { SeattleGDPTLieuQuanNavBarComponent } from './Seattle-GDPTLieuQuan/navBar/navBar.component';
 import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
@@ -71,6 +72,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFontAwesomeModule,
     PdfViewerModule,
     ChartsModule,
@@ -94,7 +96,7 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
           { path: '', component: SeattleGDPTLieuQuanHomeComponent },
           { path: 'oanhvu', component: SeattleGDPTLieuQuanOanhVuComponent },
           { path: 'oanhvu/canhmem', component: SeattleGDPTLieuQuanCanhMemComponent },
-          { path: 'adminHome', component: SeattleGDPTLieuQuanAdminHomeComponent },
+          { path: 'adminHome', component: SeattleGDPTLieuQuanAdminHomeComponent, canActivate: [SeattleGDPTLieuQuanNeedAuthGuard] },
         ]
       },
 
@@ -119,7 +121,8 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     ])
   ],
   providers: [
-    NeedAuthGuard
+    NeedAuthGuard,
+    SeattleGDPTLieuQuanNeedAuthGuard,
   ],
   bootstrap: [AppComponent]
 })

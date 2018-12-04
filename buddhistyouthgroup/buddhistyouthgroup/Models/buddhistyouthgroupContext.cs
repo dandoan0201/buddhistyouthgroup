@@ -33,19 +33,11 @@ namespace buddhistyouthgroup.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Day).IsUnicode(false);
-
                 entity.Property(e => e.EndDate).HasColumnType("datetime");
 
                 entity.Property(e => e.EventName).IsUnicode(false);
 
-                entity.Property(e => e.Month).IsUnicode(false);
-
                 entity.Property(e => e.StartDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Time).IsUnicode(false);
-
-                entity.Property(e => e.Weekday).IsUnicode(false);
             });
 
             modelBuilder.Entity<Users>(entity =>

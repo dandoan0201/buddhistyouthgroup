@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'SeattleGDPTLieuQuan-nav-bar',
@@ -16,7 +17,7 @@ export class SeattleGDPTLieuQuanNavBarComponent {
 
   IsLogin: boolean = false;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private member: MemberService) {
   }
 
   Login() {
@@ -35,6 +36,7 @@ export class SeattleGDPTLieuQuanNavBarComponent {
       }
       else if (this.IsLogin == true)
       {
+        this.member.setToken("token");
         this.router.navigateByUrl(
           this.router.createUrlTree(
             ['gdptlieuquan/adminHome'], {
@@ -50,6 +52,8 @@ export class SeattleGDPTLieuQuanNavBarComponent {
 
   Logout() {
     this.IsLogin = false;
+
+    this.member.logout();
 
     this.router.navigateByUrl(
       this.router.createUrlTree(
