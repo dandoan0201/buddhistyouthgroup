@@ -15,9 +15,8 @@ namespace buddhistyouthgroup.Models
         {
         }
 
-        public virtual DbSet<Blog> Blog { get; set; }
         public virtual DbSet<CalendarEvents> CalendarEvents { get; set; }
-        public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,27 +29,28 @@ namespace buddhistyouthgroup.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Blog>(entity =>
-            {
-                entity.Property(e => e.Url).IsRequired();
-            });
-
             modelBuilder.Entity<CalendarEvents>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Date)
-                    .HasColumnName("Date_")
-                    .HasColumnType("datetime");
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Organization).IsUnicode(false);
+                entity.Property(e => e.EventName).IsUnicode(false);
+
+                entity.Property(e => e.StartDate).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<Post>(entity =>
+            modelBuilder.Entity<Users>(entity =>
             {
-                entity.HasOne(d => d.Blog)
-                    .WithMany(p => p.Post)
-                    .HasForeignKey(d => d.BlogId);
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .IsUnicode(false);
             });
         }
     }

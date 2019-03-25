@@ -1,0 +1,138 @@
+<ngx-loading-bar></ngx-loading-bar>
+
+
+<ng-template #NewCalendarEvent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <label>Event Name (Required)</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="EventName" name="EventName">
+        </div>
+
+        <label>Start Date (Required)</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp.toggle()" placeholder="yyyy-mm-dd" name="StartDate" ngbDatepicker #dp="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="StartDate">
+        </div>
+
+        <label>Start Time</label>
+        <div class="input-group">
+          <ngb-timepicker [(ngModel)]="StartTime" [meridian]="meridian" name="StartTime"></ngb-timepicker>
+        </div>
+
+        <label>End Date</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp2.toggle()" placeholder="yyyy-mm-dd" name="EndDate" ngbDatepicker #dp2="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="EndDate">
+        </div>
+
+        <label>End Time</label>
+        <div class="input-group">
+          <ngb-timepicker [(ngModel)]="EndTime" [meridian]="meridian" name="EndTime"></ngb-timepicker>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="AddCalendarEvent()">Save</button>
+    <button type="button" class="btn btn-outline-warning" (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #CalendarEvent_Edit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <label>Event Name</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="EventName_Edit" name="EventName">
+        </div>
+
+        <label>Start Date</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp.toggle()" name="StartDate" ngbDatepicker #dp="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="StartDate_Edit">
+        </div>
+
+        <label>Start Time</label>
+        <div class="input-group">
+          <ngb-timepicker [(ngModel)]="StartTime_Edit" [meridian]="meridian" name="StartTime"></ngb-timepicker>
+        </div>
+
+        <label>End Date</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp2.toggle()" placeholder="yyyy-mm-dd" name="EndDate" ngbDatepicker #dp2="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="EndDate_Edit">
+        </div>
+
+        <label>End Time</label>
+        <div class="input-group">
+          <ngb-timepicker [(ngModel)]="EndTime_Edit" [meridian]="meridian" name="EndTime"></ngb-timepicker>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="UpdateCalendarEvent()">Update</button>
+    <button type="button" class="btn btn-outline-warning" (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>
+
+<div class="container">
+  <br />
+  <button type="button" class="btn btn-outline-primary float-right" (click)="CreateCalendarEvent(NewCalendarEvent)"> New Event </button>
+</div>
+
+<div class="container" style="overflow:scroll;height:400px;">
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Start Date</th>
+          <th>Start Time</th>
+          <th>End Date</th>
+          <th>End Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of CalendarEvents">
+          <td>{{item.eventName}}</td>
+          <td>{{item.start}}</td>
+          <td>{{item.startTime}}</td>
+          <td>{{item.end}}</td>
+          <td>{{item.endTime}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal" (click)="EditCalendarEvent(CalendarEvent_Edit, item)"> Edit </button>
+            <button type="button" class="btn btn-outline-danger" (click)="DeleteCalendarEvent(item)"> Delete </button>
+          </td>
+      </tbody>
+    </table>
+  </div>
+</div>

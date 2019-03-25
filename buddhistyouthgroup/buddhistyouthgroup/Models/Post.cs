@@ -10,6 +10,5 @@ namespace buddhistyouthgroup.Models
         public string Content { get; set; }
         public string Title { get; set; }
 
-        public Blog Blog { get; set; }
     }
 }

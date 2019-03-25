@@ -1,9 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+  stagger,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home-canhMem',
   templateUrl: './canhMem.component.html',
+  animations: [
+    trigger('slideup', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 0 }),
+        animate('100ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+  ]
 })
 
 export class SeattleGDPTLieuQuanCanhMemComponent {
@@ -13,7 +35,7 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
 
   course: string = "canhMem";
   IsLectures: boolean = false;
-
+  IsSyllabus: boolean = false;
 
   constructor() { }
 
@@ -21,6 +43,15 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
   {
     this.Home = true;
     this.IsGoBack = false;
+    this.IsSyllabus = false;
+    this.IsLectures = false;
+  }
+
+  ViewSyllabus()
+  {
+    this.Home = false;
+    this.IsGoBack = true;
+    this.IsSyllabus = true;
     this.IsLectures = false;
   }
 
@@ -29,13 +60,18 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
     this.Home = false;
     this.IsGoBack = true;
     this.IsLectures = true;
+    this.IsSyllabus = false;
+  }
+
+  // todo:  a popup to email the teacher accordingly 
+  Email()
+  {
+
   }
 
   public barChartColors: Array<any> = [
     {
     backgroundColor: [
-      'rgba(255,255,0,1)',
-      'rgba(255,255,0,1)',
       'rgba(255,255,0,1)',
       'rgba(255,255,0,1)',
       'rgba(255,255,0,1)',
@@ -69,9 +105,7 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
       'rgba(255,140,0,1)',
       'rgba(255,140,0,1)',
       'rgba(255,140,0,1)',
-      'rgba(255,140,0,1)',
-      'rgba(255,140,0,1)',
-      'rgba(255,140,0,1)',
+      'rgba(255,140,0,1)'
     ],
   }
 ];
@@ -82,8 +116,8 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
   };
   public barChartLabels: string[] = [
     'Melinda', 'Anny', 'Julia', 'Emily',
-    'Ben', 'Darwyn', 'Khang', 'Elalne',
-    'Bao Chau', 'Thuy', 'Lena', 'Annie',
+    'Darwyn', 'Khang', 'Elalne',
+    'Bao Chau', 'Thuy', 'Lena', 
     'Casey', 'Tommy', 'Kim', 'Jayden Le',
     'Jayden N.'
   ];
@@ -91,8 +125,8 @@ export class SeattleGDPTLieuQuanCanhMemComponent {
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    { data: [42.2, 0, 54, 18, 32.2, 42.16, 35.76, 58.2, 57.6, 65.8, 50.24, 58.8, 64.8, 61.4, 25, 11.04, 0], label: 'Spring Quarter' },
-    { data: [11, 56, 45, 62, 35, 56, 52, 75, 69, 51, 53, 77, 52, 66, 42, 59, 42], label: 'Fall Quarter' },
+    { data: [42.2, 0, 54, 18, 42.16, 35.76, 58.2, 57.6, 65.8, 50.24, 64.8, 61.4, 25, 11.04, 0], label: 'Spring Quarter' },
+    { data: [11, 56, 45, 62, 56, 52, 75, 69, 51, 53, 52, 66, 42, 59, 42], label: 'Fall Quarter' },
     //{ data: [38, 18, 70, 59, 66, 17, 60], label: 'Winter Quarter' },
   ];
 

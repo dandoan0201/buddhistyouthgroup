@@ -1,15 +1,38 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 declare var $: any;
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+  stagger,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'SeattleGDPTLieuQuan-home',
   templateUrl: './home.component.html',
+  animations: [
+    trigger('slideup', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 0 }),
+        animate('100ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+  ]
 })
 
 export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
+  animation: boolean = true;
 
   images = [1, 2, 3].map(() => `https://picsum.photos/1000/500?random&t=${Math.random()}`);
   obj: any = { title: 'No Sinh Hoat: Huynh Truong Conference', start: '2018-10-28' };
@@ -18,12 +41,10 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 
 
-    this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
-
-    http.get<any[]>(baseUrl + 'api/SampleData/GetEvents').subscribe(result => {
+    http.get<any[]>(baseUrl + 'api/Admin/GetCalendarEvents').subscribe(result => {
 
       let array: any[] = result as any[];
-
+      console.log(array);
       let newArray: any[] = [];
 
       let today: Date = new Date();
@@ -44,13 +65,11 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.router.navigate([{ outlets: { NavBar: 'gdptlieuquan' } }]);
-
     $(document).ready(function () {
 
 
       $.ajax({
-        url: "api/SampleData/GetEvents",
+        url: "api/Admin/GetCalendarEvents",
         dataType: "json",
         success: response => {
 
@@ -86,34 +105,12 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
         }
       });
 
-
     });
   }
 
-  //calendarOptions: Options;
-
-  //@ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
   calendarDateYear: any = new Date().getFullYear();
 
-  //constructor() { }
-
-  //ngOnInit() {
-  //  this.calendarOptions = {
-  //    editable: true,
-  //    eventLimit: false,
-  //    header: {
-  //      left: '',
-  //      center: 'title',
-  //      right: ''
-  //    },
-  //    events: this.eventsArray,
-  //    height: 'auto',
-  //    contentHeight: 'auto',
-  //    fixedWeekCount: false,
-     
-  //  };
-  //}
 
   ChangeMonth(monthNumber) {
 
@@ -123,10 +120,6 @@ export class SeattleGDPTLieuQuanHomeComponent implements OnInit {
       $('#calendar').fullCalendar('gotoDate', newDate);
     });
 
-    //let newDate = this.ucCalendar.fullCalendar('getDate');
-    //newDate = newDate.month(monthNumber);
-
-    //this.ucCalendar.fullCalendar('gotoDate', newDate);
   }
 
   MoveYearBackward() {

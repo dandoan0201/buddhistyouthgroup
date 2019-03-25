@@ -1,8 +1,8 @@
+<ngx-loading-bar></ngx-loading-bar>
 
 
 
-
-<div class="container" *ngIf="Home">
+<div class="container" *ngIf="Home" [@slideup]="Home">
   <div class="row">
     <div class="col-xl-3">
       <h4>
@@ -12,7 +12,7 @@
 
       <div>
         <br />
-        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Syllabus </button>
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="ViewSyllabus()"> Syllabus </button>
         <br />
         <br />
         &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Grades </button>
@@ -20,6 +20,8 @@
         <br />
         &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="ViewLecture()"> Lectures </button>
         <br />
+        <br />
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="Email()"> Email </button>
       </div>
     </div>
     <div class="col-xl-9">
@@ -39,7 +41,19 @@
   </div>
 </div>
 
-<div *ngIf="IsLectures">
+<div *ngIf="IsSyllabus" [@slideup]="Home">
+  <div class="container">
+    <h4>
+      <strong><u>Canh Mem Course</u></strong>
+      &nbsp; <button type="button" class="btn btn-outline-secondary" (click)="GoBack()"> Go Back </button>
+    </h4>
+  </div>
+  <br />
+  <!--<app-GDPTLieuQuan-pdfViewer></app-GDPTLieuQuan-pdfViewer>-->
+  <app-pdfViewer-syllabus [syllabus]="course"></app-pdfViewer-syllabus>
+</div>
+
+<div *ngIf="IsLectures" [@slideup]="Home">
   <div class="container">
     <h4>
       <strong><u>Canh Mem Course</u></strong>

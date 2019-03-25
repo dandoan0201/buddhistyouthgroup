@@ -14,8 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,13 +32,19 @@
     <None Remove="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
     <None Remove="ClientApp\src\app\customer.service.ts" />
     <None Remove="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
+    <None Remove="ClientApp\src\app\layouts\gdptlieuquan-layout.component.ts" />
+    <None Remove="ClientApp\src\app\layouts\home-layout.component.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\mission\mission.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\member.service.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer-syllabus.component.ts" />
     <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\Seattle-GDPTLieuQuan-auth.guard.ts" />
     <None Remove="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
@@ -46,17 +54,24 @@
     <TypeScriptCompile Include="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\customer.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\getInvolved\getInvolved.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\layouts\gdptlieuquan-layout.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\layouts\home-layout.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mission\mission.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\member.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer-syllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\Seattle-GDPTLieuQuan-auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\Seattle-GDPTLieuQuan\admin\" />
     <Folder Include="ClientApp\src\assets\pdf\" />
   </ItemGroup>
 
