@@ -79,26 +79,32 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     LoadingBarHttpClientModule,
     NgbModule,
     RouterModule.forRoot([
-
-      {
-        path: '', component: HomeLayoutComponent, children: [
-          { path: '', component: HomeComponent },
-          { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
-          { path: 'fetch-data', component: FetchDataComponent },
-          { path: 'mission', component: MissionComponent },
-          { path: 'staff', component: StaffComponent },
-          { path: 'getInvolved', component: GetInvolvedComponent },
-          { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
-        ]
-      },
-      {
-        path: 'gdptlieuquan', component: SeattleGDPTLieuQuanHomeLayoutComponent, children: [
-          { path: '', component: SeattleGDPTLieuQuanHomeComponent },
-          { path: 'oanhvu', component: SeattleGDPTLieuQuanOanhVuComponent },
-          { path: 'oanhvu/canhmem', component: SeattleGDPTLieuQuanCanhMemComponent },
-          { path: 'adminHome', component: SeattleGDPTLieuQuanAdminHomeComponent, canActivate: [SeattleGDPTLieuQuanNeedAuthGuard] },
-        ]
-      },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'mission', component: MissionComponent },
+      { path: 'staff', component: StaffComponent },
+      { path: 'getInvolved', component: GetInvolvedComponent },
+      { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
+      //{
+      //  path: '', component: HomeLayoutComponent, children: [
+      //    { path: '', component: HomeComponent },
+      //    { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
+      //    { path: 'fetch-data', component: FetchDataComponent },
+      //    { path: 'mission', component: MissionComponent },
+      //    { path: 'staff', component: StaffComponent },
+      //    { path: 'getInvolved', component: GetInvolvedComponent },
+      //    { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
+      //  ]
+      //},
+      //{
+      //  path: 'gdptlieuquan', component: SeattleGDPTLieuQuanHomeLayoutComponent, children: [
+      //    { path: '', component: SeattleGDPTLieuQuanHomeComponent },
+      //    { path: 'oanhvu', component: SeattleGDPTLieuQuanOanhVuComponent },
+      //    { path: 'oanhvu/canhmem', component: SeattleGDPTLieuQuanCanhMemComponent },
+      //    { path: 'adminHome', component: SeattleGDPTLieuQuanAdminHomeComponent, canActivate: [SeattleGDPTLieuQuanNeedAuthGuard] },
+      //  ]
+      //},
 
       //{ path: '', component: HomeComponent, pathMatch: 'full' },
       //{ path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
