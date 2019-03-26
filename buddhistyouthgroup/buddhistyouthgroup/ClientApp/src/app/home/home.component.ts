@@ -66,25 +66,25 @@ export class HomeComponent implements OnInit {
 
   constructor(private customer: CustomerService, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
 
-    //http.get<any[]>(baseUrl + 'api/Admin/GetCalendarEvents').subscribe(result => {
+    http.get<any[]>(baseUrl + 'api/Admin/GetCalendarEvents').subscribe(result => {
 
-    //  let array: any[] = result as any[];
-    //  console.log(array);
-    //  let newArray: any[] = [];
+      let array: any[] = result as any[];
+      console.log(array);
+      let newArray: any[] = [];
 
-    //  let today: Date = new Date();
+      let today: Date = new Date();
 
-    //  for (let i: number = 0; i < array.length; i++) {
+      for (let i: number = 0; i < array.length; i++) {
 
-    //    let check: Date = new Date(array[i].start);
-    //    if (today < check) {
-    //      newArray.push(array[i]);
-    //    }
-    //  }
+        let check: Date = new Date(array[i].start);
+        if (today < check) {
+          newArray.push(array[i]);
+        }
+      }
 
-    //  this.eventsArray = newArray;
+      this.eventsArray = newArray;
 
-    //}, error => console.error(error));
+    }, error => console.error(error));
 
   }
 
@@ -92,42 +92,42 @@ export class HomeComponent implements OnInit {
 
     $(document).ready(function () {
 
-      //$.ajax({
-      //  url: "api/Admin/GetCalendarEvents",
-      //  dataType: "json",
-      //  success: response => {
+      $.ajax({
+        url: "api/Admin/GetCalendarEvents",
+        dataType: "json",
+        success: response => {
 
-      //    $('#calendar').fullCalendar({
-      //      editable: true,
-      //      eventLimit: false,
-      //      header: {
-      //        left: '',
-      //        center: 'title',
-      //        right: ''
-      //      },
-      //      events: response,
-      //      height: 'auto',
-      //      contentHeight: 'auto',
-      //      fixedWeekCount: false,
-      //      eventRender: function (event, element) {
-      //        element.popover({
-      //          content: event.title,
-      //          trigger: "hover",
-      //          placement: "bottom"
-      //        })
-      //      },
-      //      eventColor: '#068104',
-      //      eventTextColor: '#FFFFFF'
-      //    });
+          $('#calendar').fullCalendar({
+            editable: true,
+            eventLimit: false,
+            header: {
+              left: '',
+              center: 'title',
+              right: ''
+            },
+            events: response,
+            height: 'auto',
+            contentHeight: 'auto',
+            fixedWeekCount: false,
+            eventRender: function (event, element) {
+              element.popover({
+                content: event.title,
+                trigger: "hover",
+                placement: "bottom"
+              })
+            },
+            eventColor: '#068104',
+            eventTextColor: '#FFFFFF'
+          });
 
-      //    let date = $('#calendar').fullCalendar('getDate');
-      //    $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
+          let date = $('#calendar').fullCalendar('getDate');
+          $('#calendarDateYear').html("<b>" + date.year().toString() + "</b>");
 
-      //  },
-      //  error: (response, errorMessage) => {
-      //    console.log(errorMessage);
-      //  }
-      //});
+        },
+        error: (response, errorMessage) => {
+          console.log(errorMessage);
+        }
+      });
 
     });
   }

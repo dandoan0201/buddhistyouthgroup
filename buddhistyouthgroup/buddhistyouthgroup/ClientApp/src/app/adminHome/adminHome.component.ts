@@ -4,12 +4,11 @@ import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-boo
 
 
 @Component({
-  selector: 'SeattleGDPTLieuQuan-adminHome',
+  selector: 'app-adminHome',
   templateUrl: './adminHome.component.html',
 })
 
-
-export class SeattleGDPTLieuQuanAdminHomeComponent {
+export class AdminHomeComponent {
 
   closeResult: string;
   CalendarEvents: any[];
@@ -28,7 +27,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
   StartTime_Edit: any;
   EndTime_Edit: any;
 
-  meridian = true; 
+  meridian = true;
 
   time: any;
 
@@ -67,11 +66,11 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
     this.EndDate_Edit = { year: CalendarEvent.endYear, month: CalendarEvent.endMonth, day: CalendarEvent.endDay };
 
     if (CalendarEvent.startTime != "") {
-      this.StartTime_Edit = { hour: CalendarEvent.startTimeHour, minute: CalendarEvent.startTimeMinute }; 
+      this.StartTime_Edit = { hour: CalendarEvent.startTimeHour, minute: CalendarEvent.startTimeMinute };
     }
 
     if (CalendarEvent.endTime != "") {
-      this.EndTime_Edit = { hour: CalendarEvent.endTimeHour, minute: CalendarEvent.endTimeMinute }; 
+      this.EndTime_Edit = { hour: CalendarEvent.endTimeHour, minute: CalendarEvent.endTimeMinute };
     }
 
     console.log(CalendarEvent);
@@ -83,8 +82,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
     //});
   }
 
-  AddCalendarEvent()
-  {
+  AddCalendarEvent() {
     if (this.EventName == undefined || this.StartDate == undefined) {
       alert("You are required to fill out the Event Name and Start Date");
       return;
@@ -114,7 +112,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
     else {
       body = body.set("endtime", this.EndTime.hour + ":" + this.EndTime.minute);
     }
-    
+
     this.http.post<any>(this.baseUrl + 'api/Admin/IsCalendarEventAdded', body).subscribe(result => {
 
       console.log(result);
@@ -144,8 +142,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
     this.modalRef.close();
   }
 
-  UpdateCalendarEvent()
-  {
+  UpdateCalendarEvent() {
     let body = new HttpParams();
     body = body.set("ID", this.CalendarEventSelected_Edit.id);
     body = body.set("eventname", this.EventName_Edit);
@@ -173,7 +170,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
     else {
       body = body.set("endtime", this.EndTime_Edit.hour + ":" + this.EndTime_Edit.minute);
     }
- 
+
     console.log(this.CalendarEventSelected_Edit);
     console.log(body);
 
@@ -224,7 +221,7 @@ export class SeattleGDPTLieuQuanAdminHomeComponent {
       }, error => console.error(error));
 
     }, error => console.log(error));
-    
+
   }
 
 }

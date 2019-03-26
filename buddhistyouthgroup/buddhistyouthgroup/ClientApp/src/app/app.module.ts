@@ -19,6 +19,11 @@ import { AppComponent } from './app.component';
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
+import { OanhVuComponent } from './oanhvu/oanhvu.component';
+import { AdminHomeComponent } from './adminHome/adminHome.component';
+import { PDFViewerComponent } from './pdfViewer/pdfViewer.component';
+import { PDFViewerSyllabusComponent } from './pdfViewer/pdfViewer-syllabus.component';
+import { CanhMemComponent } from './canhMem/canhMem.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MissionComponent } from './mission/mission.component';
@@ -35,8 +40,8 @@ import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canh
 import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/adminHome/adminHome.component';
 
 
-import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
-import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer-syllabus.component';
+//import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
+//import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer-syllabus.component';
 
 
 
@@ -47,6 +52,11 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     HomeLayoutComponent,
     NavMenuComponent,
     HomeComponent,
+    OanhVuComponent,
+    AdminHomeComponent,
+    PDFViewerComponent,
+    PDFViewerSyllabusComponent,
+    CanhMemComponent,
     CounterComponent,
     FetchDataComponent,
     MissionComponent,
@@ -62,8 +72,8 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     SeattleGDPTLieuQuanCanhMemComponent,
     SeattleGDPTLieuQuanAdminHomeComponent,
 
-    PDFViewerComponent,
-    PDFViewerSyllabusComponent,
+    //PDFViewerComponent,
+    //PDFViewerSyllabusComponent,
     
     LoginComponent
   ],
@@ -80,6 +90,9 @@ import { PDFViewerSyllabusComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdf
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'oanhvu', component: OanhVuComponent },
+      { path: 'adminHome', component: AdminHomeComponent },
+      { path: 'oanhvu/canhmem', component: CanhMemComponent },
       { path: 'counter', component: CounterComponent, canActivate: [NeedAuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'mission', component: MissionComponent },

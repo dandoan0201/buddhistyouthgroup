@@ -1,4 +1,4 @@
-<!--<ngx-loading-bar></ngx-loading-bar>
+<ngx-loading-bar></ngx-loading-bar>
 
 
 
@@ -7,21 +7,21 @@
     <div class="col-xl-3">
       <h4>
         <strong><u>Canh Mem Course</u></strong>
-       
+        <!--&nbsp; <button type="button" class="btn btn-outline-secondary" *ngIf="IsGoBack" (click)="GoBack()"> Go Back </button>-->
       </h4>
 
       <div>
         <br />
         &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="ViewSyllabus()"> Syllabus </button>
+        <!--<br />
         <br />
-        <br />
-        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Grades </button>
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary"> Grades </button>-->
         <br />
         <br />
         &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="ViewLecture()"> Lectures </button>
+        <!--<br />
         <br />
-        <br />
-        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="Email()"> Email </button>
+        &nbsp; &nbsp; &nbsp; &nbsp;<button type="button" class="btn btn-outline-secondary" (click)="Email()"> Email </button>-->
       </div>
     </div>
     <div class="col-xl-9">
@@ -36,7 +36,7 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
       </div>
-
+      <!--<button class="btn btn-outline-secondary" (click)="randomize()">Random</button>-->
     </div>
   </div>
 </div>
@@ -49,7 +49,7 @@
     </h4>
   </div>
   <br />
-
+  <!--<app-GDPTLieuQuan-pdfViewer></app-GDPTLieuQuan-pdfViewer>-->
   <app-pdfViewer-syllabus [syllabus]="course"></app-pdfViewer-syllabus>
 </div>
 
@@ -61,6 +61,6 @@
     </h4>
   </div>
   <br />
-  <app-GDPTLieuQuan-pdfViewer [course]="course"></app-GDPTLieuQuan-pdfViewer>
-</div>-->
+  <app-pdfViewer [course]="course"></app-pdfViewer>
+</div>
 

@@ -36,7 +36,7 @@ export class NavMenuComponent {
         this.member.setToken("token");
         this.router.navigateByUrl(
           this.router.createUrlTree(
-            ['gdptlieuquan/adminHome'], {
+            ['/adminHome'], {
             }
           )
         );
@@ -54,7 +54,7 @@ export class NavMenuComponent {
 
     this.router.navigateByUrl(
       this.router.createUrlTree(
-        ['/gdptlieuquan'], {
+        ['/'], {
         }
       )
     );
