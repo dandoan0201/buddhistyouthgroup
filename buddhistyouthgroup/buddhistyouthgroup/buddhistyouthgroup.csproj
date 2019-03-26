@@ -22,8 +22,15 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\**" />
+    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,15 +49,6 @@
     <None Remove="ClientApp\src\app\oanhvu\oanhvu.component.ts" />
     <None Remove="ClientApp\src\app\pdfViewer\pdfViewer-syllabus.component.ts" />
     <None Remove="ClientApp\src\app\pdfViewer\pdfViewer.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\member.service.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer-syllabus.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
-    <None Remove="ClientApp\src\app\Seattle-GDPTLieuQuan\Seattle-GDPTLieuQuan-auth.guard.ts" />
     <None Remove="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
@@ -70,20 +68,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\oanhvu\oanhvu.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pdfViewer\pdfViewer-syllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pdfViewer\pdfViewer.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\adminHome\adminHome.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\canhMem\canhMem.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\home\home.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\member.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\navBar\navBar.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\oanhvu\oanhvu.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer-syllabus.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\pdfViewer\pdfViewer.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Seattle-GDPTLieuQuan\Seattle-GDPTLieuQuan-auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\staff\staff.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\Seattle-GDPTLieuQuan\admin\" />
     <Folder Include="ClientApp\src\assets\pdf\" />
   </ItemGroup>
 

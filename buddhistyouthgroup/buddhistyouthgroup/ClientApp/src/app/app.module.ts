@@ -31,13 +31,13 @@ import { StaffComponent } from './staff/staff.component';
 import { GetInvolvedComponent } from './getInvolved/getInvolved.component';
 import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.component';
 
-import { SeattleGDPTLieuQuanNeedAuthGuard } from './Seattle-GDPTLieuQuan/Seattle-GDPTLieuQuan-auth.guard';
-import { SeattleGDPTLieuQuanHomeLayoutComponent } from './layouts/gdptlieuquan-layout.component';
-import { SeattleGDPTLieuQuanNavBarComponent } from './Seattle-GDPTLieuQuan/navBar/navBar.component';
-import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
-import { SeattleGDPTLieuQuanOanhVuComponent } from './Seattle-GDPTLieuQuan/oanhvu/oanhvu.component';
-import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canhMem/canhMem.component';
-import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/adminHome/adminHome.component';
+//import { SeattleGDPTLieuQuanNeedAuthGuard } from './Seattle-GDPTLieuQuan/Seattle-GDPTLieuQuan-auth.guard';
+//import { SeattleGDPTLieuQuanHomeLayoutComponent } from './layouts/gdptlieuquan-layout.component';
+//import { SeattleGDPTLieuQuanNavBarComponent } from './Seattle-GDPTLieuQuan/navBar/navBar.component';
+//import { SeattleGDPTLieuQuanHomeComponent } from './Seattle-GDPTLieuQuan/home/home.component';
+//import { SeattleGDPTLieuQuanOanhVuComponent } from './Seattle-GDPTLieuQuan/oanhvu/oanhvu.component';
+//import { SeattleGDPTLieuQuanCanhMemComponent } from './Seattle-GDPTLieuQuan/canhMem/canhMem.component';
+//import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/adminHome/adminHome.component';
 
 
 //import { PDFViewerComponent } from './Seattle-GDPTLieuQuan/pdfViewer/pdfViewer.component';
@@ -65,12 +65,12 @@ import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/ad
     BuildYouthGroupComponent,
 
 
-    SeattleGDPTLieuQuanHomeLayoutComponent,
-    SeattleGDPTLieuQuanNavBarComponent,
-    SeattleGDPTLieuQuanHomeComponent,
-    SeattleGDPTLieuQuanOanhVuComponent,
-    SeattleGDPTLieuQuanCanhMemComponent,
-    SeattleGDPTLieuQuanAdminHomeComponent,
+    //SeattleGDPTLieuQuanHomeLayoutComponent,
+    //SeattleGDPTLieuQuanNavBarComponent,
+    //SeattleGDPTLieuQuanHomeComponent,
+    //SeattleGDPTLieuQuanOanhVuComponent,
+    //SeattleGDPTLieuQuanCanhMemComponent,
+    //SeattleGDPTLieuQuanAdminHomeComponent,
 
     //PDFViewerComponent,
     //PDFViewerSyllabusComponent,
@@ -141,7 +141,7 @@ import { SeattleGDPTLieuQuanAdminHomeComponent } from './Seattle-GDPTLieuQuan/ad
   ],
   providers: [
     NeedAuthGuard,
-    SeattleGDPTLieuQuanNeedAuthGuard,
+    //SeattleGDPTLieuQuanNeedAuthGuard,
   ],
   bootstrap: [AppComponent]
 })
