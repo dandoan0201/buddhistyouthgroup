@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AppComponent } from './app.component';
 
-import { HomeLayoutComponent } from './layouts/home-layout.component';
+//import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { OanhVuComponent } from './oanhvu/oanhvu.component';
@@ -49,7 +49,7 @@ import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.comp
   declarations: [
     AppComponent,
 
-    HomeLayoutComponent,
+    //HomeLayoutComponent,
     NavMenuComponent,
     HomeComponent,
     OanhVuComponent,

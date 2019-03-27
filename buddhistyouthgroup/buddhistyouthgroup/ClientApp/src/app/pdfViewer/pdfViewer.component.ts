@@ -25,7 +25,8 @@ export class PDFViewerComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     if (this.course == "canhMem") {
-      this.pdfFiles = [{ "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
+      this.pdfFiles = [
+      { "File": "Lecture 1", "Date": "5/13/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 1.pdf" },
       { "File": "Lecture 2", "Date": "7/8/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 2.pdf" },
       { "File": "Lecture 3", "Date": "9/16/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 3.pdf" },
       { "File": "Lecture 4", "Date": "9/30/2018", "pdfSrc": "../../../assets/pdf/canhmem/Lecture 4.pdf" },

@@ -16,6 +16,7 @@ namespace buddhistyouthgroup.Models
         }
 
         public virtual DbSet<CalendarEvents> CalendarEvents { get; set; }
+        public virtual DbSet<PdfFiles> PdfFiles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,7 +24,6 @@ namespace buddhistyouthgroup.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                //optionsBuilder.UseSqlServer("Server=Server=tcp:buddhistyouthgroup.database.windows.net,1433;Initial Catalog=buddhistyouthgroup;Persist Security Info=False;User ID=dandoan;Password=Lieuquan1978;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
                 optionsBuilder.UseSqlServer("Server=tcp:buddhistyouthgroup.database.windows.net,1433;Initial Catalog=buddhistyouthgroup;Persist Security Info=False;User ID=dandoan;Password=Lieuquan1978;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
@@ -39,6 +39,13 @@ namespace buddhistyouthgroup.Models
                 entity.Property(e => e.EventName).IsUnicode(false);
 
                 entity.Property(e => e.StartDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<PdfFiles>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.FileName).IsUnicode(false);
             });
 
             modelBuilder.Entity<Users>(entity =>
