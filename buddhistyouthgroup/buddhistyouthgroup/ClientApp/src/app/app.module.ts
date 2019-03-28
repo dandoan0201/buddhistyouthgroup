@@ -31,6 +31,8 @@ import { StaffComponent } from './staff/staff.component';
 import { GetInvolvedComponent } from './getInvolved/getInvolved.component';
 import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.component';
 
+import { UploadComponent } from './upload/upload.component';
+
 //import { SeattleGDPTLieuQuanNeedAuthGuard } from './Seattle-GDPTLieuQuan/Seattle-GDPTLieuQuan-auth.guard';
 //import { SeattleGDPTLieuQuanHomeLayoutComponent } from './layouts/gdptlieuquan-layout.component';
 //import { SeattleGDPTLieuQuanNavBarComponent } from './Seattle-GDPTLieuQuan/navBar/navBar.component';
@@ -63,7 +65,7 @@ import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.comp
     StaffComponent,
     GetInvolvedComponent,
     BuildYouthGroupComponent,
-
+    UploadComponent,
 
     //SeattleGDPTLieuQuanHomeLayoutComponent,
     //SeattleGDPTLieuQuanNavBarComponent,
@@ -99,6 +101,8 @@ import { BuildYouthGroupComponent } from './buildYouthGroup/buildYouthGroup.comp
       { path: 'staff', component: StaffComponent },
       { path: 'getInvolved', component: GetInvolvedComponent },
       { path: 'buildYouthGroup', component: BuildYouthGroupComponent },
+      { path: 'upload', component: UploadComponent },
+
       //{
       //  path: '', component: HomeLayoutComponent, children: [
       //    { path: '', component: HomeComponent },

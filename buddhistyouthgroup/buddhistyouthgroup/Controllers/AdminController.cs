@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using buddhistyouthgroup.Models;
@@ -192,5 +193,65 @@ namespace buddhistyouthgroup.Controllers
 
             return true;
         }
+
+
+        [HttpPost("[action]"), DisableRequestSizeLimit]
+        public ActionResult UploadFile()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                //string varfilepath = file.
+
+                byte[] filebyte;
+                var ms = new MemoryStream();
+                file.CopyTo(ms);
+                filebyte = ms.ToArray();
+                //string folderName = "Upload";
+                //string webRootPath = _hostingEnvironment.WebRootPath;
+                //string newPath = Path.Combine(webRootPath, folderName);
+                //if (!Directory.Exists(newPath))
+                //{
+                //    Directory.CreateDirectory(newPath);
+                //}
+                //if (file.Length > 0)
+                //{
+                //    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                //    string fullPath = Path.Combine(newPath, fileName);
+                //    using (var stream = new FileStream(fullPath, FileMode.Create))
+                //    {
+                //        file.CopyTo(stream);
+                //    }
+                //}
+
+                var newPDF = database.Set<PdfFiles>();
+
+                newPDF.Add(new PdfFiles
+                {
+                    FileName = file.FileName,
+                    FileData = filebyte
+                });
+
+                database.SaveChanges();
+
+                return Json("Upload Successful.");
+            }
+            catch (System.Exception ex)
+            {
+                return Json("Upload Failed: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("[action]")]
+        public List<PdfFiles> GetFile()
+        {
+
+
+            List<PdfFiles> list = database.PdfFiles.ToList();
+
+            return list;
+        }
+
     }
 }

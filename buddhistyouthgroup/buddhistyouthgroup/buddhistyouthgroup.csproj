@@ -50,6 +50,7 @@
     <None Remove="ClientApp\src\app\pdfViewer\pdfViewer-syllabus.component.ts" />
     <None Remove="ClientApp\src\app\pdfViewer\pdfViewer.component.ts" />
     <None Remove="ClientApp\src\app\staff\staff.component.ts" />
+    <None Remove="ClientApp\src\app\upload\upload.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,6 +70,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\pdfViewer\pdfViewer-syllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pdfViewer\pdfViewer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\staff\staff.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\upload\upload.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
