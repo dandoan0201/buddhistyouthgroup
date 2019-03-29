@@ -35,6 +35,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\adminHome\adminHome.component.ts" />
+    <None Remove="ClientApp\src\app\adminOanhvu\adminOanhvu.component.ts" />
+    <None Remove="ClientApp\src\app\adminPdfViewer\adminPdfViewer.component.ts" />
     <None Remove="ClientApp\src\app\api.service.ts" />
     <None Remove="ClientApp\src\app\auth.guard.ts" />
     <None Remove="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />
@@ -55,6 +57,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\adminHome\adminHome.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\adminOanhvu\adminOanhvu.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\adminPdfViewer\adminPdfViewer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\api.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\buildYouthGroup\buildYouthGroup.component.ts" />

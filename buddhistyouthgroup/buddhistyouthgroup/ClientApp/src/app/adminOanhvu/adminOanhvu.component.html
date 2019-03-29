@@ -1,0 +1,23 @@
+<ngx-loading-bar></ngx-loading-bar>
+
+<div class="container">
+
+  <div class="btn-group btn-group-toggle">
+    <button type="button" class="btn btn-outline-success" (click)="ViewMoMat()">Mở Mắt</button>
+    <button type="button" class="btn btn-outline-success" (click)="ViewCanhMem()">Cánh Mềm</button>
+    <button type="button" class="btn btn-outline-success" (click)="ViewChanCung()">Chân Cứng</button>
+    <button type="button" class="btn btn-outline-success" (click)="ViewTungBay()">Tung Bay</button>
+  </div>
+</div>
+
+
+<div *ngIf="IsCanhMem">
+  <br />
+  <div class="container">
+    <input #file type="file" style="width:210px;" (change)="handleFileInput(file.files)" /><button type="button" class="btn btn-outline-secondary" (click)="UploadFile()">Upload</button>
+  </div>
+  <br />
+  <app-adminPdfViewer [course]="course"></app-adminPdfViewer>
+</div>
+
+

@@ -196,17 +196,17 @@ namespace buddhistyouthgroup.Controllers
 
 
         [HttpPost("[action]"), DisableRequestSizeLimit]
-        public ActionResult UploadFile()
+        public ActionResult UploadFile(string date)
         {
             try
             {
                 var file = Request.Form.Files[0];
                 //string varfilepath = file.
 
-                byte[] filebyte;
-                var ms = new MemoryStream();
-                file.CopyTo(ms);
-                filebyte = ms.ToArray();
+                //byte[] filebyte;
+                //var ms = new MemoryStream();
+                //file.CopyTo(ms);
+                //filebyte = ms.ToArray();
                 //string folderName = "Upload";
                 //string webRootPath = _hostingEnvironment.WebRootPath;
                 //string newPath = Path.Combine(webRootPath, folderName);
@@ -224,15 +224,15 @@ namespace buddhistyouthgroup.Controllers
                 //    }
                 //}
 
-                var newPDF = database.Set<PdfFiles>();
+                //var newPDF = database.Set<PdfFiles>();
 
-                newPDF.Add(new PdfFiles
-                {
-                    FileName = file.FileName,
-                    FileData = filebyte
-                });
+                //newPDF.Add(new PdfFiles
+                //{
+                //    FileName = file.FileName,
+                //    FileData = filebyte
+                //});
 
-                database.SaveChanges();
+                //database.SaveChanges();
 
                 return Json("Upload Successful.");
             }
