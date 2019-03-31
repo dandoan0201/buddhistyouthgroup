@@ -196,7 +196,7 @@ namespace buddhistyouthgroup.Controllers
 
 
         [HttpPost("[action]"), DisableRequestSizeLimit]
-        public ActionResult UploadFile(string date)
+        public ActionResult UploadFile(string Course, string FileName, string Date)
         {
             try
             {

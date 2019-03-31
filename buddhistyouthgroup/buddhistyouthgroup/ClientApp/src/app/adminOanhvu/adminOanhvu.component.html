@@ -13,11 +13,59 @@
 
 <div *ngIf="IsCanhMem">
   <br />
-  <div class="container">
+  <!--<div class="container">
     <input #file type="file" style="width:210px;" (change)="handleFileInput(file.files)" /><button type="button" class="btn btn-outline-secondary" (click)="UploadFile()">Upload</button>
+  </div>-->
+  <div class="container">
+    <br />
+    <button type="button" class="btn btn-outline-primary" (click)="CreateCalendarEvent(NewCalendarEvent)">Upload File </button>
   </div>
   <br />
   <app-adminPdfViewer [course]="course"></app-adminPdfViewer>
 </div>
 
 
+<ng-template #NewCalendarEvent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">File</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <label>Course (<span style="color:red">Required</span>)</label>
+        <div class="input-group form-group">
+          <!--<input class="form-control" [(ngModel)]="Course" name="Course">-->
+          <select [ngModel]="CourseSelected" class="btn btn-outline-secondary text-dark" style="width:200px;">
+            <option *ngFor="let item of Courses" (click)="onSelectCourse(item)" name="Course" class="form-control">
+              {{item}}
+            </option>
+          </select>
+        </div>
+
+        <label>File Name (<span style="color:red">Required</span>)</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="FileName" name="FileName">
+        </div>
+
+        <label>Date (<span style="color:red">Required</span>)</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp.toggle()" placeholder="yyyy-mm-dd" name="Date" ngbDatepicker #dp="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="Date">
+        </div>
+
+        <input #file type="file" style="width:210px;" (change)="handleFileInput(file.files)" />
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="UploadFile()">Upload</button>
+    <button type="button" class="btn btn-outline-warning" (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>

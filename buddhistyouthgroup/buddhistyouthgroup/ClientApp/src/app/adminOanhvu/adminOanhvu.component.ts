@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpParams } from '@angular/common/http';
 import { PdfViewerComponent, PDFDocumentProxy } from '../../../node_modules/ng2-pdf-viewer';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'adminOanhvu-component',
@@ -30,6 +32,16 @@ export class AdminOanhVuComponent implements OnInit {
   course: string;
 
   fileToUpload: File = null;
+
+  private modalRef: NgbModalRef;
+
+  Date: any;
+  FileName: any;
+  Course: any;
+
+  public Courses: string[] = ['Mở Mắt', 'Cánh Mềm', 'Chân Cứng', 'Tung Bay'];
+
+  public CourseSelected: any;
 
   ViewMoMat() {
 
@@ -108,7 +120,16 @@ export class AdminOanhVuComponent implements OnInit {
     });
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  CreateCalendarEvent(content) {
+    this.modalRef = this.modalService.open(content);
+    //  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    //  this.closeResult = `Closed with: ${result}`;
+    //}, (reason) => {
+    //  this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //});
+  }
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private modalService: NgbModal) { }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
   }
@@ -121,7 +142,9 @@ export class AdminOanhVuComponent implements OnInit {
     //let body = new HttpParams();
     //body = body.set("date", "2/2/2019");
 
-    formData.append("date", "2/2/2019");
+    formData.append("Course", this.CourseSelected);
+    formData.append("FileName", this.FileName);
+    formData.append("Date", this.Date.year + "-" + this.Date.month + "-" + this.Date.day);
 
     const uploadReq = new HttpRequest('POST', 'api/Admin/UploadFile', formData, { reportProgress: true });
 
@@ -163,6 +186,10 @@ export class AdminOanhVuComponent implements OnInit {
   //  });
   //}
 
+  public onSelectCourse(item) {
+    this.CourseSelected = item;
+  }
+
   View(selectedPdf, rowSelected) {
 
     this.page = 1;
@@ -170,6 +197,7 @@ export class AdminOanhVuComponent implements OnInit {
     this.pdfSrc = selectedPdf.pdfSrc
     this.hideElement = false;
   }
+
   callBackFunction(pdf: PDFDocumentProxy): void {
 
     this.totalPages = pdf.numPages;
