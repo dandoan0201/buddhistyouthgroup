@@ -2,9 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpParams } from '@angular/common/http';
 import { PdfViewerComponent, PDFDocumentProxy } from '../../../node_modules/ng2-pdf-viewer';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AdminPDFViewerComponent } from '../adminPdfViewer/adminPdfViewer.component';
 
 
 @Component({
+  providers: [AdminPDFViewerComponent],
   selector: 'adminOanhvu-component',
   templateUrl: './adminOanhvu.component.html'
 })
@@ -39,9 +42,12 @@ export class AdminOanhVuComponent implements OnInit {
   FileName: any;
   Course: any;
 
-  public Courses: string[] = ['Mở Mắt', 'Cánh Mềm', 'Chân Cứng', 'Tung Bay'];
+  public Courses_View: string[] = ['Mở Mắt', 'Cánh Mềm', 'Chân Cứng', 'Tung Bay'];
+  public Courses: string[] = ['Mo Mat', 'Canh Mem', 'Chan Cung', 'Tung Bay'];
 
   public CourseSelected: any;
+
+  form: FormGroup;
 
   ViewMoMat() {
 
@@ -55,6 +61,7 @@ export class AdminOanhVuComponent implements OnInit {
   ViewCanhMem() {
 
     this.course = "canhMem";
+    this.CourseSelected = this.Courses_View[1];
     this.IsMoMat = false;
     this.IsCanhMem = true;
     this.IsChanCung = false;
@@ -129,31 +136,51 @@ export class AdminOanhVuComponent implements OnInit {
     //});
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private modalService: NgbModal) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private modalService: NgbModal, private component: AdminPDFViewerComponent) { }
+
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
   }
+
   UploadFile() {
 
+    if (this.FileName === undefined) {
+      alert("You didn't include a File Name!");
+      return;
+    }
+
+    if (this.Date === undefined) {
+      alert("You didn't include a Date!");
+      return;
+    }
+
+    if (this.fileToUpload == null) {
+      alert("You didn't include a file!");
+      return;
+    }
 
     const formData = new FormData();
     formData.append(this.fileToUpload.name, this.fileToUpload);
-
-    //let body = new HttpParams();
-    //body = body.set("date", "2/2/2019");
-
-    formData.append("Course", this.CourseSelected);
+    let index = this.Courses_View.indexOf(this.CourseSelected);
+    formData.append("Course", this.Courses[index]);
     formData.append("FileName", this.FileName);
     formData.append("Date", this.Date.year + "-" + this.Date.month + "-" + this.Date.day);
 
-    const uploadReq = new HttpRequest('POST', 'api/Admin/UploadFile', formData, { reportProgress: true });
+    //const uploadReq = new HttpRequest('POST', 'api/Admin/UploadFile', formData);
 
-    //this.http.post<any>(this.baseUrl + 'api/Admin/UploadFile', formData).subscribe(result => {
-    //}, error => console.error(error));
-    console.log(formData);
-    this.http.request(uploadReq).subscribe(event => {
+    this.http.post<any>(this.baseUrl + 'api/Admin/UploadFile', formData).subscribe(result => {
 
-    });
+      console.log(result);
+      console.log(this.component)
+      this.component.Refresh(this.course);
+      this.modalRef.close();
+    }, error => console.error(error));
+
+    //this.http.request(uploadReq).subscribe(result => {
+    //  //alert("File Upload Successfully!");
+    //  this.modalRef.close();
+
+    //});
 
   }
 

@@ -9,6 +9,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ChartsModule } from 'ng2-charts';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 import { NeedAuthGuard } from '../app/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -91,6 +92,7 @@ import { UploadComponent } from './upload/upload.component';
   ],
   providers: [
     NeedAuthGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

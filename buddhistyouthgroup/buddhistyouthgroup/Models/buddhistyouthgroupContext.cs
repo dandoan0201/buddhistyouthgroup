@@ -45,7 +45,7 @@ namespace buddhistyouthgroup.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Class).IsUnicode(false);
+                entity.Property(e => e.Course).IsUnicode(false);
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
 

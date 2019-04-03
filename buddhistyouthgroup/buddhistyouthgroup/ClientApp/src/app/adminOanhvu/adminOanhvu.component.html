@@ -36,22 +36,22 @@
     <form>
       <div class="form-group">
 
-        <label>Course (<span style="color:red">Required</span>)</label>
+        <label><u>Course</u> (<span style="color:red">Required</span>)</label>
+        <!--<input class="form-control" [(ngModel)]="Course" name="Course">-->
         <div class="input-group form-group">
-          <!--<input class="form-control" [(ngModel)]="Course" name="Course">-->
-          <select [ngModel]="CourseSelected" class="btn btn-outline-secondary text-dark" style="width:200px;">
-            <option *ngFor="let item of Courses" (click)="onSelectCourse(item)" name="Course" class="form-control">
+          <select [ngModel]="CourseSelected" class="btn btn-outline-secondary text-dark" name="Course" style="width:200px;">
+            <option *ngFor="let item of Courses_View" (click)="onSelectCourse(item)" class="form-control">
               {{item}}
             </option>
           </select>
         </div>
 
-        <label>File Name (<span style="color:red">Required</span>)</label>
+        <label><u>File Name</u> (<span style="color:red">Required</span>)</label>
         <div class="input-group">
           <input class="form-control" [(ngModel)]="FileName" name="FileName">
         </div>
 
-        <label>Date (<span style="color:red">Required</span>)</label>
+        <label><u>Date</u> (<span style="color:red">Required</span>)</label>
         <div class="input-group">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
@@ -59,7 +59,9 @@
           <input class="form-control" (click)="dp.toggle()" placeholder="yyyy-mm-dd" name="Date" ngbDatepicker #dp="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="Date">
         </div>
 
-        <input #file type="file" style="width:210px;" (change)="handleFileInput(file.files)" />
+        <br />
+
+        <input #file type="file" name="File" style="width:210px;" (change)="handleFileInput(file.files)" />
 
       </div>
     </form>

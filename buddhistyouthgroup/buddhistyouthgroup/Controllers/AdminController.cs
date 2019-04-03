@@ -201,12 +201,12 @@ namespace buddhistyouthgroup.Controllers
             try
             {
                 var file = Request.Form.Files[0];
-                //string varfilepath = file.
 
-                //byte[] filebyte;
-                //var ms = new MemoryStream();
-                //file.CopyTo(ms);
-                //filebyte = ms.ToArray();
+                DateTime ConvertDate = Convert.ToDateTime(Date);
+                byte[] filebyte;
+                var ms = new MemoryStream();
+                file.CopyTo(ms);
+                filebyte = ms.ToArray();
                 //string folderName = "Upload";
                 //string webRootPath = _hostingEnvironment.WebRootPath;
                 //string newPath = Path.Combine(webRootPath, folderName);
@@ -224,17 +224,19 @@ namespace buddhistyouthgroup.Controllers
                 //    }
                 //}
 
-                //var newPDF = database.Set<PdfFiles>();
+                var newPDF = database.Set<PdfFiles>();
 
-                //newPDF.Add(new PdfFiles
-                //{
-                //    FileName = file.FileName,
-                //    FileData = filebyte
-                //});
+                newPDF.Add(new PdfFiles
+                {
+                    Course = Course,
+                    FileName = FileName,
+                    Date = ConvertDate,
+                    FileData = filebyte
+                });
 
-                //database.SaveChanges();
+                database.SaveChanges();
 
-                return Json("Upload Successful.");
+                return Json("File Upload Successfully.");
             }
             catch (System.Exception ex)
             {
@@ -243,12 +245,15 @@ namespace buddhistyouthgroup.Controllers
         }
 
 
-        [HttpGet("[action]")]
-        public List<PdfFiles> GetFile()
+        [HttpPost("[action]")]
+        public List<PdfFiles> GetCourseFiles(string Course)
         {
+            List<PdfFiles> list = new List<PdfFiles>();
 
-
-            List<PdfFiles> list = database.PdfFiles.ToList();
+            if(Course == "canhMem")
+            {
+                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0}", "Canh Mem").ToList();
+            }
 
             return list;
         }
