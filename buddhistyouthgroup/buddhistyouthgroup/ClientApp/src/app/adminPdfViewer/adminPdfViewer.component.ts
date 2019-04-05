@@ -13,7 +13,6 @@ export class AdminPDFViewerComponent implements AfterViewInit, OnInit {
 
   @Input() public course: string;
 
-
   pdfSrc: string = '';
   page: number = 1;
   totalPages: number;
@@ -27,7 +26,6 @@ export class AdminPDFViewerComponent implements AfterViewInit, OnInit {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private datePipe: DatePipe) { }
 
   public Refresh(course) {
-    console.log("IM IN HERE!");
     if (course == "canhMem") {
 
       let body = new HttpParams();

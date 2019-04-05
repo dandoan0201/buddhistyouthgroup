@@ -18,14 +18,69 @@
   </div>-->
   <div class="container">
     <br />
-    <button type="button" class="btn btn-outline-primary" (click)="CreateCalendarEvent(NewCalendarEvent)">Upload File </button>
+    <button type="button" class="btn btn-outline-primary" (click)="CreateUploadFile(UploadFileModal)">Upload File </button>
   </div>
   <br />
-  <app-adminPdfViewer [course]="course"></app-adminPdfViewer>
+  <div class="">
+    <div class="row">
+      <div class="col-sm-1 d-none d-lg-block d-none">
+      </div>
+      <div class="col-sm-3 d-none d-lg-block d-none">
+        <div id="pdfviewer" style="overflow: scroll;height:500px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="position:sticky;top:0;z-index:999;background-color:white;">File</th>
+                <th style="position:sticky;top:0;z-index:999;background-color:white;">Date</th>
+                <th style="position:sticky;top:0;z-index:999;background-color:white;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let file of pdfFiles; let i = index" [class.active]="i == selectedRow">
+                <td>{{file.File}}</td>
+                <td>{{file.Date}}</td>
+                <td class="btn-group">
+                  <button type="button" class="btn btn-outline-secondary" (click)="View(file, i)"> View </button>
+                  <!--<button type="button" class="btn btn-outline-warning" (click)="Delete(file, i)"> Edit </button>
+                  <button type="button" class="btn btn-outline-danger" (click)="Delete(file, i)"> Delete </button>-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-7 d-none d-lg-block d-none">
+        <pdf-viewer [hidden]="hideElement"
+                    [src]="pdfSrc"
+                    [render-text]="true"
+                    [show-all]="false"
+                    [page]="page"
+                    [original-size]="false"
+                    [autoresize]="true"
+                    (after-load-complete)="callBackFunction($event)"
+                    style="display:block;outline:#6c757d solid 1px;"></pdf-viewer>
+        <br />
+        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Previous()" style="bottom:-6px;position: absolute;left:280px;">
+          Previous
+        </button>
+        <span style="padding-left:370px;">
+          <u><input [hidden]="hideElement" [(ngModel)]="page" type="text" id="page" /></u>
+          <span [hidden]="hideElement"> of </span>
+          {{totalPages}}
+          <span [hidden]="hideElement"> pages </span>
+        </span>
+        <button [hidden]="hideElement" type="button" class="btn btn-outline-secondary" (click)="Next()" style="bottom:-6px;left:504px;position: absolute;">
+          Next
+        </button>
+      </div>
+      <div class="col-sm-1 d-none d-lg-block d-none">
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<ng-template #NewCalendarEvent let-modal>
+<ng-template #UploadFileModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">File</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">

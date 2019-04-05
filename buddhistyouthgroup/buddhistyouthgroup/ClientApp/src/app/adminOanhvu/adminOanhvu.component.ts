@@ -1,13 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpParams } from '@angular/common/http';
 import { PdfViewerComponent, PDFDocumentProxy } from '../../../node_modules/ng2-pdf-viewer';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AdminPDFViewerComponent } from '../adminPdfViewer/adminPdfViewer.component';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
-  providers: [AdminPDFViewerComponent],
   selector: 'adminOanhvu-component',
   templateUrl: './adminOanhvu.component.html'
 })
@@ -22,6 +20,8 @@ export class AdminOanhVuComponent implements OnInit {
   public progress: number;
   public message: string;
 
+  public course: string;
+
   pdfSrc: string = '';
   page: number = 1;
   totalPages: number;
@@ -31,8 +31,6 @@ export class AdminOanhVuComponent implements OnInit {
   pdfFiles: any[];
 
   hideElement: boolean = true;
-
-  course: string;
 
   fileToUpload: File = null;
 
@@ -50,7 +48,6 @@ export class AdminOanhVuComponent implements OnInit {
   form: FormGroup;
 
   ViewMoMat() {
-
     this.course = "moMat";
     this.IsMoMat = true;
     this.IsCanhMem = false;
@@ -59,17 +56,16 @@ export class AdminOanhVuComponent implements OnInit {
   }
 
   ViewCanhMem() {
-
     this.course = "canhMem";
     this.CourseSelected = this.Courses_View[1];
     this.IsMoMat = false;
     this.IsCanhMem = true;
     this.IsChanCung = false;
     this.IsTungBay = false;
+    this.LoadFiles();
   }
 
   ViewChanCung() {
-
     this.course = "chanCung";
     this.IsMoMat = false;
     this.IsCanhMem = false;
@@ -78,12 +74,42 @@ export class AdminOanhVuComponent implements OnInit {
   }
 
   ViewTungBay() {
-
     this.course = "tungBay";
     this.IsMoMat = false;
     this.IsCanhMem = false;
     this.IsChanCung = false;
     this.IsTungBay = true;
+  }
+
+  LoadFiles() {
+    if (this.course == "canhMem") {
+      let body = new HttpParams();
+      body = body.set('Course', this.course);
+
+      let list: any[];
+      this.http.post<any[]>(this.baseUrl + 'api/Admin/GetCourseFiles', body).subscribe(result => {
+
+        list = result as any[];
+        console.log(list);
+
+        let files: any[] = [];
+        for (var i = 0; i < list.length; i++) {
+
+          var raw = window.atob(list[i].fileData);
+
+          var rawLength = raw.length;
+          var array = new Uint8Array(new ArrayBuffer(rawLength));
+          for (var j = 0; j < rawLength; j++) {
+            array[j] = raw.charCodeAt(j);
+          }
+          var date = new Date(list[i].date);
+          let object: any = { "File": list[i].fileName, "Date": this.datePipe.transform(date, "MM/dd/yyyy"), "pdfSrc": array };
+          files.push(object);
+        }
+        this.pdfFiles = files;
+
+      }, error => console.error(error));
+    }
   }
 
   ngOnInit() {
@@ -118,7 +144,6 @@ export class AdminOanhVuComponent implements OnInit {
 
     // javascript is needed to change bootstrap group button to active color
     $(document).ready(function () {
-
       $(".btn-group > .btn").click(function () {
         $(".btn-group > .btn").removeClass("active");
         $(this).button('toggle');
@@ -127,7 +152,14 @@ export class AdminOanhVuComponent implements OnInit {
     });
   }
 
-  CreateCalendarEvent(content) {
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private modalService: NgbModal, private datePipe: DatePipe) { }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
+  CreateUploadFile(content) {
     this.modalRef = this.modalService.open(content);
     //  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
     //  this.closeResult = `Closed with: ${result}`;
@@ -136,14 +168,7 @@ export class AdminOanhVuComponent implements OnInit {
     //});
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private modalService: NgbModal, private component: AdminPDFViewerComponent) { }
-
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
   UploadFile() {
-
     if (this.FileName === undefined) {
       alert("You didn't include a File Name!");
       return;
@@ -166,59 +191,46 @@ export class AdminOanhVuComponent implements OnInit {
     formData.append("FileName", this.FileName);
     formData.append("Date", this.Date.year + "-" + this.Date.month + "-" + this.Date.day);
 
-    //const uploadReq = new HttpRequest('POST', 'api/Admin/UploadFile', formData);
-
     this.http.post<any>(this.baseUrl + 'api/Admin/UploadFile', formData).subscribe(result => {
 
-      console.log(result);
-      console.log(this.component)
-      this.component.Refresh(this.course);
+      this.FileName = null;
+      this.Date = null;
+
+      let body = new HttpParams();
+      body = body.set('Course', this.course);
+
+      let list: any[];
+      this.http.post<any[]>(this.baseUrl + 'api/Admin/GetCourseFiles', body).subscribe(result => {
+
+        list = result as any[];
+        console.log(list);
+
+        let files: any[] = [];
+        for (var i = 0; i < list.length; i++) {
+
+          var raw = window.atob(list[i].fileData);
+
+          var rawLength = raw.length;
+          var array = new Uint8Array(new ArrayBuffer(rawLength));
+          for (var j = 0; j < rawLength; j++) {
+            array[j] = raw.charCodeAt(j);
+          }
+          var date = new Date(list[i].date);
+          let object: any = { "File": list[i].fileName, "Date": this.datePipe.transform(date, "MM/dd/yyyy"), "pdfSrc": array };
+          files.push(object);
+        }
+        this.pdfFiles = files;
+
+      }, error => console.error(error));
       this.modalRef.close();
     }, error => console.error(error));
-
-    //this.http.request(uploadReq).subscribe(result => {
-    //  //alert("File Upload Successfully!");
-    //  this.modalRef.close();
-
-    //});
-
   }
-
-  //upload(files) {
-
-  //  if (files.length === 0) {
-  //    return;
-  //  }
-
-  //  const formData = new FormData();
-
-  //  for (let file of files) {
-  //    formData.append(file.name, file);
-  //  }
-
-
-  //  const uploadReq = new HttpRequest('POST', 'api/Admin/UploadFile', formData, {
-  //    reportProgress: true,
-  //  });
-
-  //  this.http.request(uploadReq).subscribe(event => {
-
-  //    if (event.type === HttpEventType.UploadProgress) {
-  //      this.progress = Math.round(100 * event.loaded / event.total);
-  //    }
-  //    else if (event.type === HttpEventType.Response) {
-  //      this.message = event.body.toString();
-  //    }
-
-  //  });
-  //}
 
   public onSelectCourse(item) {
     this.CourseSelected = item;
   }
 
   View(selectedPdf, rowSelected) {
-
     this.page = 1;
     this.selectedRow = rowSelected;
     this.pdfSrc = selectedPdf.pdfSrc
@@ -226,24 +238,19 @@ export class AdminOanhVuComponent implements OnInit {
   }
 
   callBackFunction(pdf: PDFDocumentProxy): void {
-
     this.totalPages = pdf.numPages;
   }
 
   Previous() {
-
     if (this.page != 1) {
       this.page--;
     }
-
   }
 
   Next() {
-
     if (this.page != this.totalPages) {
       this.page++;
     }
-
   }
 
 }
