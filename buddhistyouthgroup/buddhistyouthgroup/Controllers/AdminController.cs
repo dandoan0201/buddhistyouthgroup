@@ -253,22 +253,6 @@ namespace buddhistyouthgroup.Controllers
                 var ms = new MemoryStream();
                 file.CopyTo(ms);
                 filebyte = ms.ToArray();
-                //string folderName = "Upload";
-                //string webRootPath = _hostingEnvironment.WebRootPath;
-                //string newPath = Path.Combine(webRootPath, folderName);
-                //if (!Directory.Exists(newPath))
-                //{
-                //    Directory.CreateDirectory(newPath);
-                //}
-                //if (file.Length > 0)
-                //{
-                //    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                //    string fullPath = Path.Combine(newPath, fileName);
-                //    using (var stream = new FileStream(fullPath, FileMode.Create))
-                //    {
-                //        file.CopyTo(stream);
-                //    }
-                //}
 
                 var record = database.PdfFiles.SingleOrDefault(b => b.Id == ID);
                 if(record != null)
@@ -279,17 +263,6 @@ namespace buddhistyouthgroup.Controllers
                     record.FileData = filebyte;
                     database.SaveChanges();
                 }
-
-
-                //newPDF.Add(new PdfFiles
-                //{
-                //    Course = Course,
-                //    FileName = FileName,
-                //    Date = ConvertDate,
-                //    FileData = filebyte
-                //});
-
-                //database.SaveChanges();
 
                 return Json("File Update Successfully.");
             }
@@ -316,10 +289,21 @@ namespace buddhistyouthgroup.Controllers
         public List<PdfFiles> GetCourseFiles(string Course)
         {
             List<PdfFiles> list = new List<PdfFiles>();
-
-            if(Course == "canhMem")
+            if (Course == "moMat")
             {
-                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0}", "Canh Mem").ToList();
+                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0} ORDER BY date ASC", "Mo Mat").ToList();
+            }
+            else if (Course == "canhMem")
+            {
+                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0} ORDER BY date ASC", "Canh Mem").ToList();
+            }
+            else if (Course == "chanCung")
+            {
+                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0} ORDER BY date ASC", "Chan Cung").ToList();
+            }
+            else if (Course == "tungBay")
+            {
+                list = database.PdfFiles.FromSql("SELECT * FROM PDFFiles WHERE course = {0} ORDER BY date ASC", "Tung Bay").ToList();
             }
 
             return list;
