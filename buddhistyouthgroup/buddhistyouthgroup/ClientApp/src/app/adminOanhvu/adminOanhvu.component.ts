@@ -12,10 +12,7 @@ import { DatePipe } from '@angular/common';
 
 export class AdminOanhVuComponent implements OnInit {
 
-  IsMoMat: boolean = false;
-  IsCanhMem: boolean = false;
-  IsChanCung: boolean = false;
-  IsTungBay: boolean = false;
+  IsCourseFiles: boolean = false;
 
   public progress: number;
   public message: string;
@@ -49,67 +46,58 @@ export class AdminOanhVuComponent implements OnInit {
 
   ViewMoMat() {
     this.course = "moMat";
-    this.IsMoMat = true;
-    this.IsCanhMem = false;
-    this.IsChanCung = false;
-    this.IsTungBay = false;
+    this.CourseSelected = this.Courses_View[0];
+    this.IsCourseFiles = true;
+    this.LoadFiles();
   }
 
   ViewCanhMem() {
     this.course = "canhMem";
     this.CourseSelected = this.Courses_View[1];
-    this.IsMoMat = false;
-    this.IsCanhMem = true;
-    this.IsChanCung = false;
-    this.IsTungBay = false;
+    this.IsCourseFiles = true;
     this.LoadFiles();
   }
 
   ViewChanCung() {
     this.course = "chanCung";
-    this.IsMoMat = false;
-    this.IsCanhMem = false;
-    this.IsChanCung = true;
-    this.IsTungBay = false;
+    this.CourseSelected = this.Courses_View[2];
+    this.IsCourseFiles = true;
+    this.LoadFiles();
   }
 
   ViewTungBay() {
     this.course = "tungBay";
-    this.IsMoMat = false;
-    this.IsCanhMem = false;
-    this.IsChanCung = false;
-    this.IsTungBay = true;
+    this.CourseSelected = this.Courses_View[3];
+    this.IsCourseFiles = true;
+    this.LoadFiles();
   }
 
   LoadFiles() {
-    if (this.course == "canhMem") {
-      let body = new HttpParams();
-      body = body.set('Course', this.course);
+    let body = new HttpParams();
+    body = body.set('Course', this.course);
 
-      let list: any[];
-      this.http.post<any[]>(this.baseUrl + 'api/Admin/GetCourseFiles', body).subscribe(result => {
+    let list: any[];
+    this.http.post<any[]>(this.baseUrl + 'api/Admin/GetCourseFiles', body).subscribe(result => {
 
-        list = result as any[];
-        console.log(list);
+      list = result as any[];
+      let files: any[] = [];
+      for (var i = 0; i < list.length; i++) {
 
-        let files: any[] = [];
-        for (var i = 0; i < list.length; i++) {
+        var raw = window.atob(list[i].fileData);
 
-          var raw = window.atob(list[i].fileData);
-
-          var rawLength = raw.length;
-          var array = new Uint8Array(new ArrayBuffer(rawLength));
-          for (var j = 0; j < rawLength; j++) {
-            array[j] = raw.charCodeAt(j);
-          }
-          var date = new Date(list[i].date);
-          let object: any = { "File": list[i].fileName, "Date": this.datePipe.transform(date, "MM/dd/yyyy"), "pdfSrc": array };
-          files.push(object);
+        var rawLength = raw.length;
+        var array = new Uint8Array(new ArrayBuffer(rawLength));
+        for (var j = 0; j < rawLength; j++) {
+          array[j] = raw.charCodeAt(j);
         }
-        this.pdfFiles = files;
+        var date = new Date(list[i].date);
+        let object: any = { "ID": list[i].id, "File": list[i].fileName, "Date": this.datePipe.transform(date, "MM/dd/yyyy"), "pdfSrc": array };
+        files.push(object);
+      }
 
-      }, error => console.error(error));
-    }
+      this.pdfFiles = files;
+
+    }, error => console.error(error));
   }
 
   ngOnInit() {
@@ -196,41 +184,92 @@ export class AdminOanhVuComponent implements OnInit {
       this.FileName = null;
       this.Date = null;
 
-      let body = new HttpParams();
-      body = body.set('Course', this.course);
-
-      let list: any[];
-      this.http.post<any[]>(this.baseUrl + 'api/Admin/GetCourseFiles', body).subscribe(result => {
-
-        list = result as any[];
-        console.log(list);
-
-        let files: any[] = [];
-        for (var i = 0; i < list.length; i++) {
-
-          var raw = window.atob(list[i].fileData);
-
-          var rawLength = raw.length;
-          var array = new Uint8Array(new ArrayBuffer(rawLength));
-          for (var j = 0; j < rawLength; j++) {
-            array[j] = raw.charCodeAt(j);
-          }
-          var date = new Date(list[i].date);
-          let object: any = { "File": list[i].fileName, "Date": this.datePipe.transform(date, "MM/dd/yyyy"), "pdfSrc": array };
-          files.push(object);
-        }
-        this.pdfFiles = files;
-
-      }, error => console.error(error));
+      this.LoadFiles();
       this.modalRef.close();
     }, error => console.error(error));
+  } 
+
+  FileID_Edit: any;
+  FileName_Edit: any;
+  FileDate_Edit: any;
+  fileToUpload_Edit: File = null;
+
+  EditFile(content, file) {
+    console.log(file);
+    this.FileID_Edit = file.ID;
+    this.FileName_Edit = file.File;
+    var date = new Date(file.Date);
+    this.FileDate_Edit = { year: date.getFullYear(), month: (date.getMonth() + 1), day: date.getDate() };
+
+    this.modalRef = this.modalService.open(content);
+    //  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    //  this.closeResult = `Closed with: ${result}`;
+    //}, (reason) => {
+    //  this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //});
+  }
+
+  handleFileInput_Edit(files: FileList) {
+    this.fileToUpload_Edit = files.item(0);
+  }
+
+  UpdateFile() {
+    if (this.FileName_Edit === undefined) {
+      alert("You didn't include a File Name!");
+      return;
+    }
+
+    if (this.FileDate_Edit === undefined) {
+      alert("You didn't include a Date!");
+      return;
+    }
+
+    if (this.fileToUpload_Edit == null) {
+      alert("You didn't include a file!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append(this.fileToUpload_Edit.name, this.fileToUpload_Edit);
+    let index = this.Courses_View.indexOf(this.CourseSelected);
+    formData.append("ID", this.FileID_Edit);
+    formData.append("Course", this.Courses[index]);
+    formData.append("FileName", this.FileName_Edit);
+    formData.append("Date", this.FileDate_Edit.year + "-" + this.FileDate_Edit.month + "-" + this.FileDate_Edit.day);
+
+    this.http.post<any>(this.baseUrl + 'api/Admin/UpdateFile', formData).subscribe(result => {
+
+      this.FileName = null;
+      this.Date = null;
+
+      this.LoadFiles();
+      this.modalRef.close();
+    }, error => console.error(error));
+  }
+
+  DeleteFile(file) {
+    var response = confirm("Are you sure you want to delete this?");
+
+    if (response == false) {
+      return;
+    }
+
+    let body = new HttpParams();
+    body = body.set("ID", file.ID);
+
+    this.http.post<any>(this.baseUrl + 'api/Admin/IsFileDeleted', body).subscribe(result => {
+
+      this.LoadFiles();
+
+    }, error => console.log(error));
+
   }
 
   public onSelectCourse(item) {
     this.CourseSelected = item;
   }
 
-  View(selectedPdf, rowSelected) {
+  ViewFile(selectedPdf, rowSelected) {
     this.page = 1;
     this.selectedRow = rowSelected;
     this.pdfSrc = selectedPdf.pdfSrc

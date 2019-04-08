@@ -81,9 +81,6 @@ namespace buddhistyouthgroup.Controllers
                 }
                 list2.Add(obj);
             }
-
-
-
             return list2;
         }
 
@@ -244,6 +241,76 @@ namespace buddhistyouthgroup.Controllers
             }
         }
 
+        [HttpPost("[action]"), DisableRequestSizeLimit]
+        public ActionResult UpdateFile(int ID, string Course, string FileName, string Date)
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+
+                DateTime ConvertDate = Convert.ToDateTime(Date);
+                byte[] filebyte;
+                var ms = new MemoryStream();
+                file.CopyTo(ms);
+                filebyte = ms.ToArray();
+                //string folderName = "Upload";
+                //string webRootPath = _hostingEnvironment.WebRootPath;
+                //string newPath = Path.Combine(webRootPath, folderName);
+                //if (!Directory.Exists(newPath))
+                //{
+                //    Directory.CreateDirectory(newPath);
+                //}
+                //if (file.Length > 0)
+                //{
+                //    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                //    string fullPath = Path.Combine(newPath, fileName);
+                //    using (var stream = new FileStream(fullPath, FileMode.Create))
+                //    {
+                //        file.CopyTo(stream);
+                //    }
+                //}
+
+                var record = database.PdfFiles.SingleOrDefault(b => b.Id == ID);
+                if(record != null)
+                {
+                    record.Course = Course;
+                    record.FileName = FileName;
+                    record.Date = ConvertDate;
+                    record.FileData = filebyte;
+                    database.SaveChanges();
+                }
+
+
+                //newPDF.Add(new PdfFiles
+                //{
+                //    Course = Course,
+                //    FileName = FileName,
+                //    Date = ConvertDate,
+                //    FileData = filebyte
+                //});
+
+                //database.SaveChanges();
+
+                return Json("File Update Successfully.");
+            }
+            catch (System.Exception ex)
+            {
+                return Json("Upload Failed: " + ex.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public bool IsFileDeleted(int ID)
+        {
+            var record = database.PdfFiles.SingleOrDefault(s => s.Id == ID);
+            if (record != null)
+            {
+                database.PdfFiles.Remove(record);
+                database.SaveChanges();
+            }
+
+            return true;
+        }
 
         [HttpPost("[action]")]
         public List<PdfFiles> GetCourseFiles(string Course)

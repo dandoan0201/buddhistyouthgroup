@@ -11,11 +11,8 @@
 </div>
 
 
-<div *ngIf="IsCanhMem">
+<div *ngIf="IsCourseFiles">
   <br />
-  <!--<div class="container">
-    <input #file type="file" style="width:210px;" (change)="handleFileInput(file.files)" /><button type="button" class="btn btn-outline-secondary" (click)="UploadFile()">Upload</button>
-  </div>-->
   <div class="container">
     <br />
     <button type="button" class="btn btn-outline-primary" (click)="CreateUploadFile(UploadFileModal)">Upload File </button>
@@ -40,9 +37,9 @@
                 <td>{{file.File}}</td>
                 <td>{{file.Date}}</td>
                 <td class="btn-group">
-                  <button type="button" class="btn btn-outline-secondary" (click)="View(file, i)"> View </button>
-                  <!--<button type="button" class="btn btn-outline-warning" (click)="Delete(file, i)"> Edit </button>
-                  <button type="button" class="btn btn-outline-danger" (click)="Delete(file, i)"> Delete </button>-->
+                  <button type="button" class="btn btn-outline-secondary" (click)="ViewFile(file, i)"> View </button>
+                  <button type="button" class="btn btn-outline-warning" (click)="EditFile(File_Edit, file)"> Edit </button>
+                  <button type="button" class="btn btn-outline-danger" (click)="DeleteFile(file, i)"> Delete </button>
                 </td>
               </tr>
             </tbody>
@@ -123,6 +120,52 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-success" (click)="UploadFile()">Upload</button>
+    <button type="button" class="btn btn-outline-warning" (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #File_Edit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">File Update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <label><u>Course</u> (<span style="color:red">Required</span>)</label>
+        <!--<input class="form-control" [(ngModel)]="Course" name="Course">-->
+        <div class="input-group form-group">
+          <select [ngModel]="CourseSelected" class="btn btn-outline-secondary text-dark" name="Course" style="width:200px;" disabled>
+            <option *ngFor="let item of Courses_View" (click)="onSelectCourse(item)" class="form-control">
+              {{item}}
+            </option>
+          </select>
+        </div>
+
+        <label><u>File Name</u> (<span style="color:red">Required</span>)</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="FileName_Edit" name="FileName">
+        </div>
+
+        <label><u>Date</u> (<span style="color:red">Required</span>)</label>
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa name="calendar"></fa></button>
+          </div>
+          <input class="form-control" (click)="dp.toggle()" placeholder="yyyy-mm-dd" name="Date" ngbDatepicker #dp="ngbDatepicker" [firstDayOfWeek]="7" [(ngModel)]="FileDate_Edit">
+        </div>
+
+        <br />
+
+        <input #file type="file" name="File" style="width:210px;" (change)="handleFileInput_Edit(file.files)"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="UpdateFile()">Update</button>
     <button type="button" class="btn btn-outline-warning" (click)="modal.close()">Cancel</button>
   </div>
 </ng-template>
